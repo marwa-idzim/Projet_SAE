@@ -1,8 +1,32 @@
 <?php
-//require "../config/db.php";
-//echo "Connexion réussie";
+require "../config/db.php";
+echo "Connexion réussie";
 
+$sql = "SELECT COUNT(*) FROM communes";
+// Exécution directe de la requête SQL via l'objet PDO.
+// La méthode query() est utilisée pour les requêtes simples sans paramètres.
+$stmt = $pdo->query($sql);
+$nbCommunes = $stmt->fetchColumn();
 
+$sql = "SELECT COUNT(*) FROM clubs";
+$stmt = $pdo->query($sql);
+$nbClubs = $stmt->fetchColumn();
+
+$sql = "SELECT COUNT(*) FROM sports";
+$stmt = $pdo->query($sql);
+$nbSports = $stmt->fetchColumn();
+
+$sql = "SELECT COUNT(*) FROM equipements";
+$stmt = $pdo->query($sql);
+$nbEquipements = $stmt->fetchColumn();
+
+$sql = "SELECT COUNT(*) FROM seances";
+$stmt = $pdo->query($sql);
+$nbSeances = $stmt->fetchColumn();
+
+$sql = "SELECT COUNT(*) FROM inscriptions";
+$stmt = $pdo->query($sql);
+$nbInscriptions = $stmt->fetchColumn();
 
 ?>
 <!DOCTYPE html>
@@ -29,7 +53,38 @@
 
     <h1>Trouvez une activité sportive près de chez vous</h1>
     <p>Consultez les clubs, équipements et séances sportives disponibles dans votre commune.</p>
-   
+    
+    <section class="stats">
+        <div class="stat-card">
+            <h2><?php echo $nbCommunes; ?></h2>
+            <p>Communes</p>
+        </div>
+
+        <div class="stat-card">
+            <h2><?php echo $nbClubs; ?></h2>
+            <p>Clubs</p>
+        </div>
+
+        <div class="stat-card">
+            <h2><?php echo $nbSports; ?></h2>
+            <p>Sports</p>
+        </div>
+
+        <div class="stat-card">
+            <h2><?php echo $nbEquipements; ?></h2>
+            <p>Équipements</p>
+        </div>
+
+        <div class="stat-card">
+            <h2><?php echo $nbSeances; ?></h2>
+            <p>Séances</p>
+        </div>
+
+        <div class="stat-card">
+            <h2><?php echo $nbInscriptions; ?></h2>
+            <p>Inscriptions</p>
+        </div>
+    </section>
 
      <script src="../assets/js/script.js"></script>
 </body>
