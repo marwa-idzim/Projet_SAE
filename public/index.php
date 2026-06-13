@@ -2,29 +2,29 @@
 require "../config/db.php";
 echo "Connexion réussie";
 
-$sql = "SELECT COUNT(*) FROM communes";
+$sql = "SELECT COUNT(*) FROM Communes";
 // Exécution directe de la requête SQL via l'objet PDO.
 // La méthode query() est utilisée pour les requêtes simples sans paramètres.
 $stmt = $pdo->query($sql);
 $nbCommunes = $stmt->fetchColumn();
 
-$sql = "SELECT COUNT(*) FROM clubs";
+$sql = "SELECT COUNT(*) FROM Clubs";
 $stmt = $pdo->query($sql);
 $nbClubs = $stmt->fetchColumn();
 
-$sql = "SELECT COUNT(*) FROM sports";
+$sql = "SELECT COUNT(*) FROM Sports";
 $stmt = $pdo->query($sql);
 $nbSports = $stmt->fetchColumn();
 
-$sql = "SELECT COUNT(*) FROM equipements";
+$sql = "SELECT COUNT(*) FROM Equipements";
 $stmt = $pdo->query($sql);
 $nbEquipements = $stmt->fetchColumn();
 
-$sql = "SELECT COUNT(*) FROM seances";
+$sql = "SELECT COUNT(*) FROM Seances";
 $stmt = $pdo->query($sql);
 $nbSeances = $stmt->fetchColumn();
 
-$sql = "SELECT COUNT(*) FROM inscriptions";
+$sql = "SELECT COUNT(*) FROM Inscriptions";
 $stmt = $pdo->query($sql);
 $nbInscriptions = $stmt->fetchColumn();
 
