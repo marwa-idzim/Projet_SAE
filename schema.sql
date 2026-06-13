@@ -93,7 +93,7 @@ CREATE TABLE Seances (
     date_seance DATE NOT NULL,
     heure_debut TIME NOT NULL,
     heure_fin TIME NOT NULL,
-    niveau VARCHAR(40) NOT NULL,   --débutants, seniors, etc
+    niveau VARCHAR(40) NOT NULL,   -- débutants, seniors, etc
 
     id_club BIGINT NOT NULL,
     id_equipement BIGINT NOT NULL,
