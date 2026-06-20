@@ -3,13 +3,13 @@ require "../config/db.php";
 echo "Connexion réussie";
 
 $sql = "SELECT 
-            co.nom, 
-            co.departement, 
-            COUNT(DISTINCT cl.id_club) AS nb_clubs, 
+            co.nom,
+            co.departement,
+            COUNT(DISTINCT cl.id_club) AS nb_clubs,
             COUNT(DISTINCT e.id_equipement) AS nb_equipements
-        FROM Communes co, Clubs cl, Equipements e
-        WHERE co.id_commune = cl.id_commune
-        AND co.id_commune = e.id_commune
+        FROM Communes co
+        LEFT JOIN Clubs cl ON co.id_commune = cl.id_commune
+        LEFT JOIN Equipements e ON co.id_commune = e.id_commune
         GROUP BY co.id_commune, co.nom, co.departement
         ORDER BY co.departement, co.nom
         ";
