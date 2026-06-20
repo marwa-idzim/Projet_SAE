@@ -84,3 +84,31 @@ nav {
     font-size: 16px;
     color: #4b5563;
 }
+
+.sports {
+    display: flex;
+    gap: 20px;
+    margin: 40px;
+    flex-wrap: wrap;
+}
+
+.sport-card {
+    background-color: white;
+    width: 180px;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.sport-card h2 {
+    margin: 0;
+    font-size: 36px;
+    color: #0066cc;
+}
+
+.sport-card p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #4b5563;
+}
