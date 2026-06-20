@@ -2,7 +2,7 @@
 require "../config/db.php";
 
 $sql = "SELECT  cl.nom AS nom, 
-                cl.nb_licencies AS cl.nb_licencies, 
+                cl.nb_licencies AS nb_licencies, 
                 co.nom AS commune, 
                 s.nom AS sport 
         FROM Clubs cl, Communes co, Sports s
