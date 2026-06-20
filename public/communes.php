@@ -1,7 +1,20 @@
 <?php
-//require "../config/db.php";
-//echo "Connexion réussie";
+require "../config/db.php";
+echo "Connexion réussie";
 
+$sql = "SELECT 
+            co.nom, 
+            co.departement, 
+            COUNT(DISTINCT cl.id_club) AS nb_clubs, 
+            COUNT(DISTINCT e.id_equipement) AS nb_equipements
+        FROM Communes co, Clubs cl, Equipements e
+        WHERE co.id_commune = cl.id_commune
+        AND co.id_commune = e.id_commune
+        GROUP BY co.id_commune, co.nom, co.departement
+        ORDER BY co.departement, co.nom
+        ";
+$stmt = $pdo->query($sql);
+$communes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 ?>
@@ -27,10 +40,27 @@
         <span class="nav-indicator"></span>
     </nav>
 
-    <h1>Trouvez une activité sportive près de chez vous</h1>
-    <p>Consultez les clubs, équipements et séances sportives disponibles dans votre commune.</p>
-   
+    <h1>Titre</h1>
+    <p>Description</p>
+    
+    <table >
+        <tr >
+            <th> Nom de la commune </th>
+            <th> Département </th>
+            <th> Nombre de Clubs </th>
+            <th> Nombre d'équipements </th>
+        </tr>
+        <?php foreach($communes as $commune):?>
+        <tr>
+            <td> <?= htmlspecialchars($commune['co.nom']) ?> </td>
+            <td> <?= htmlspecialchars($commune['co.Departement']) ?> </td>
+            <td> <?= htmlspecialchars($commune['COUNT(cl.id_club)']) ?> </td>
+            <td> <?= htmlspecialchars($commune['COUNT(e.id_equipement)']) ?> </td>
+        </tr>
+        <?php endforeach; ?>
+    </table >
 
-     <script src="../assets/js/script.js"></script>
+
+    <script src="../assets/js/script.js"></script>
 </body>
 </html>

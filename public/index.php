@@ -1,6 +1,5 @@
 <?php
 require "../config/db.php";
-echo "Connexion réussie";
 
 $sql = "SELECT COUNT(*) FROM Communes";
 // Exécution directe de la requête SQL via l'objet PDO.
