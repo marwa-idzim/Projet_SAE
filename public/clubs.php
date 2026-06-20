@@ -51,6 +51,6 @@ $clubs = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
     </section>
 
-     <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/script.js"></script>
 </body>
 </html>
