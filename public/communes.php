@@ -53,7 +53,7 @@ $communes = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php foreach($communes as $commune):?>
         <tr>
             <td> <?= htmlspecialchars($commune['nom']) ?> </td>
-            <td> <?= htmlspecialchars($commune['Departement']) ?> </td>
+            <td> <?= htmlspecialchars($commune['departement']) ?> </td>
             <td> <?= htmlspecialchars($commune['nb_clubs']) ?> </td>
             <td> <?= htmlspecialchars($commune['nb_equipements']) ?> </td>
         </tr>
