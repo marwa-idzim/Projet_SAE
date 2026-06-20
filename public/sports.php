@@ -5,7 +5,7 @@ $sql = "SELECT  s.nom,
                 s.Federation, 
                 COUNT(DISTINCT(c.id_club)) AS nb_clubs
         FROM Sports s
-        LEFT JOIN Clubs c ON s.id_clubs=c.id_clubs
+        LEFT JOIN Clubs c ON s.id_sport=c.id_sport
         GROUP BY s.nom, s.Federation
         ORDER bY s.nom, s.Federation
         ";
