@@ -1,7 +1,16 @@
 <?php
-//require "../config/db.php";
-//echo "Connexion réussie";
+require "../config/db.php";
 
+$sql = "SELECT  s.nom, 
+                s.Federation, 
+                COUNT(DISTINCT(c.id_club)) AS nb_clubs
+        FROM Sports s
+        LEFT JOIN Clubs c ON s.id_clubs=c.id_clubs
+        GROUP BY s.nom, s.Federation
+        ORDER bY s.nom, s.Federation
+        ";
+$stmt = $pdo->query($sql);
+$sports = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 ?>
@@ -27,9 +36,21 @@
         <span class="nav-indicator"></span>
     </nav>
 
-    <h1>Trouvez une activité sportive près de chez vous</h1>
-    <p>Consultez les clubs, équipements et séances sportives disponibles dans votre commune.</p>
-   
+
+    <h1>Titre</h1>
+    <p>Description</p>
+    
+    <section class="sports">
+        <?php foreach($sports as $sport):?>
+        <div class="sport-card">
+            <h2><?= htmlspecialchars($sport['nom']) ?></h2>
+            <p> Fédération: <?= htmlspecialchars($sport['Federation']) ?></p>
+            <p><?= htmlspecialchars($sport['nb_clubs']) ?> clubs</p>
+        </div>
+        <?php endforeach; ?>
+
+        
+    </section>
 
      <script src="../assets/js/script.js"></script>
 </body>
