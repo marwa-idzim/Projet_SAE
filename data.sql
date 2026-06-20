@@ -214,7 +214,11 @@ INSERT IGNORE INTO Equipements VALUES
 
 (214, 'Centre Sportif Nice Ouest', 'Centre Sportif', '11 avenue Mediterranee', 1009),
 
-(215, 'Piscine Strasbourg Nord', 'Piscine', '9 boulevard Europe', 1010);
+(215, 'Balle de Basket', 'Ballon', '9 rue des Moissons', 1010),
+(216, 'Ballon de Football', 'Ballon', '30 Rue des Bles', 1009),
+(217, 'Raquettes de Tennis', 'Raquette', '27 avenue Georges Brassens', 1003),
+(218, 'Raquette de Ping-Pong', 'Raquette', '31 avenue de 1962', 1008),
+(219, 'Chasubles', 'Vetement', '12 rue Louis XIV', 1009);
 
 
 -- LICENCIES
@@ -235,7 +239,10 @@ INSERT IGNORE INTO Licencies VALUES
 (312, 'Guerin', 'Eva', 'eva.guerin@mail.fr'),
 (313, 'Chevalier', 'Noa', 'noa.chevalier@mail.fr'),
 (314, 'Francois', 'Ines', 'ines.francois@mail.fr'),
-(315, 'Lambert', 'Hugo', 'hugo.lambert@mail.fr');
+(315, 'Elhosary', 'Ramy', 'ramy.elh@mail.fr'),
+(315, 'Idzim', 'Marwa', 'mrw.idz@mail.fr'),
+(315, 'Andrianandrainy', 'Jim', 'jim.shan@mail.fr'),
+(315, 'Mbappe', 'Kyky', 'kyky.mbappe@mail.fr');
 
 
 -- SEANCES
