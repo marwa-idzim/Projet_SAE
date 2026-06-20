@@ -1,8 +1,16 @@
 <?php
-//require "../config/db.php";
-//echo "Connexion réussie";
+require "../config/db.php";
 
-
+$sql = "SELECT  cl.nom AS nom, 
+                cl.nb_licencies AS cl.nb_licencies, 
+                co.nom AS commune, 
+                s.nom AS sport 
+        FROM Clubs cl, Communes co, Sports s
+        WHERE cl.id_commune=co.id_commune
+        AND cl.id_sport=s.id_sport
+        ";
+$stmt = $pdo->query($sql);
+$clubs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -27,9 +35,21 @@
         <span class="nav-indicator"></span>
     </nav>
 
-    <h1>Trouvez une activité sportive près de chez vous</h1>
-    <p>Consultez les clubs, équipements et séances sportives disponibles dans votre commune.</p>
-   
+    <h1>Titre</h1>
+    <p>Description</p>
+    
+    <section class="clubs">
+        <?php foreach($clubs as $club):?>
+        <div class="club-card">
+            <h2><?= htmlspecialchars($club['nom']) ?></h2>
+            <p> Commune: <?= htmlspecialchars($club['commune']) ?></p>
+            <p> Sport: <?= htmlspecialchars($club['sport']) ?></p>
+            <p> Nombre de licenciés: <?= htmlspecialchars($club['nb_licencies']) ?></p>
+        </div>
+        <?php endforeach; ?>
+
+        
+    </section>
 
      <script src="../assets/js/script.js"></script>
 </body>
