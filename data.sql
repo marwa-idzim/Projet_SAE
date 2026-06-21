@@ -18,7 +18,7 @@ INSERT IGNORE INTO Communes VALUES
 (1010, 'Strasbourg', 67000, 67, 'Grand Est'),
 (1011, 'Nanterre', 92000, 92, 'Ile-de-France'),
 (1012, 'Creteil', 94000, 94, 'Ile-de-France'),
-(1013, 'Cergy', 95000, 95, 'Ile-de-France'),
+(1013, 'Cergy', 95000, 95, 'Ile-de-France'), 
 (1014, 'Argenteuil', 95100, 95, 'Ile-de-France'),
 (1015, 'Aubervilliers', 93300, 93, 'Ile-de-France'),
 (1016, 'Toulouse', 31000, 31, 'Occitanie'),
