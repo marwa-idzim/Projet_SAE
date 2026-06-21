@@ -5,7 +5,6 @@ USE association_sportive;
 -- COMMUNES
 -- id_commune, nom, CodePostal, Departement, Region
 
-
 INSERT IGNORE INTO Communes VALUES
 (1001, 'Paris', 75000, 75, 'Ile-de-France'),
 (1002, 'Lyon', 69000, 69, 'Auvergne-Rhone-Alpes'),
@@ -16,11 +15,28 @@ INSERT IGNORE INTO Communes VALUES
 (1007, 'Saint-Denis', 93200, 93, 'Ile-de-France'),
 (1008, 'Montreuil', 93100, 93, 'Ile-de-France'),
 (1009, 'Nice', 6000, 6, 'Provence-Alpes-Cote dAzur'),
-(1010, 'Strasbourg', 67000, 67, 'Grand Est');
+(1010, 'Strasbourg', 67000, 67, 'Grand Est'),
+(1011, 'Nanterre', 92000, 92, 'Ile-de-France'),
+(1012, 'Creteil', 94000, 94, 'Ile-de-France'),
+(1013, 'Cergy', 95000, 95, 'Ile-de-France'),
+(1014, 'Argenteuil', 95100, 95, 'Ile-de-France'),
+(1015, 'Aubervilliers', 93300, 93, 'Ile-de-France'),
+(1016, 'Toulouse', 31000, 31, 'Occitanie'),
+(1017, 'Nantes', 44000, 44, 'Pays de la Loire'),
+(1018, 'Rennes', 35000, 35, 'Bretagne'),
+(1019, 'Grenoble', 38000, 38, 'Auvergne-Rhone-Alpes'),
+(1020, 'Montpellier', 34000, 34, 'Occitanie'),
+(1021, 'Reims', 51100, 51, 'Grand Est'),
+(1022, 'Dijon', 21000, 21, 'Bourgogne-Franche-Comte'),
+(1023, 'Tours', 37000, 37, 'Centre-Val de Loire'),
+(1024, 'Rouen', 76000, 76, 'Normandie'),
+(1025, 'Caen', 14000, 14, 'Normandie'),
+(1026, 'Angers', 49000, 49, 'Pays de la Loire'),
+(1027, 'Metz', 57000, 57, 'Grand Est'),
+(1028, 'Besancon', 25000, 25, 'Bourgogne-Franche-Comte');
 
 -- SPORTS
--- id_sport, nom , Federation
-
+-- id_sport, nom, Federation
 
 INSERT IGNORE INTO Sports VALUES
 (1, 'Football', 'FFF'),
@@ -32,10 +48,26 @@ INSERT IGNORE INTO Sports VALUES
 (7, 'Volleyball', 'FFVB'),
 (8, 'Athletisme', 'FFA'),
 (9, 'Judo', 'FFJDA'),
-(10, 'Cyclisme', 'FFC');
+(10, 'Cyclisme', 'FFC'),
+(11, 'Badminton', 'FFBaD'),
+(12, 'Boxe', 'FFBoxe'),
+(13, 'Escalade', 'FFME'),
+(14, 'Gymnastique', 'FFGym'),
+(15, 'Tennis de table', 'FFTT'),
+(16, 'Danse', 'FFD'),
+(17, 'Karaté', 'FFK'),
+(18, 'Aviron', 'FFAviron'),
+(19, 'Triathlon', 'FFTRI'),
+(20, 'Escrime', 'FFE'),
+(21, 'Hockey sur gazon', 'FFH'),
+(22, 'Roller', 'FFRS'),
+(23, 'Tir a l arc', 'FFTA'),
+(24, 'Golf', 'FFGolf'),
+(25, 'Equitation', 'FFEquestre');
+
 
 -- CLUBS
--- id_club,nom,nb_licencies,id_commune,id_sport
+-- id_club, nom, nb_licencies, id_commune, id_sport
 
 INSERT IGNORE INTO Clubs VALUES
 (101, 'Paris Football Club', 350, 1001, 1),
@@ -47,182 +79,148 @@ INSERT IGNORE INTO Clubs VALUES
 (107, 'Saint-Denis Handball', 210, 1007, 6),
 (108, 'Montreuil Volley Club', 140, 1008, 7),
 (109, 'Nice Athletisme', 175, 1009, 8),
-(110, 'Strasbourg Judo Academy', 130, 1010, 9);
+(110, 'Strasbourg Judo Academy', 130, 1010, 9),
+(111, 'Nanterre Handball Club', 190, 1011, 6),
+(112, 'Creteil Judo Academie', 150, 1012, 9),
+(113, 'Cergy Tennis Club', 125, 1013, 3),
+(114, 'Argenteuil Badminton Club', 95, 1014, 11),
+(115, 'Aubervilliers Boxe Club', 110, 1015, 12),
+(116, 'Toulouse Escalade Passion', 85, 1016, 13),
+(117, 'Nantes Gymnastique', 135, 1017, 14),
+(118, 'Rennes Tennis de Table', 75, 1018, 15),
+(119, 'Cergy Football Jeunes', 210, 1013, 1),
+(120, 'Argenteuil Basket Association', 160, 1014, 2),
+(121, 'Aubervilliers Athletisme', 145, 1015, 8),
+(122, 'Rennes Natation Club', 130, 1018, 4),
+(123, 'Grenoble Danse Club', 95, 1019, 16),
+(124, 'Grenoble Karaté Dojo', 120, 1019, 17),
+(125, 'Montpellier Aviron Club', 80, 1020, 18),
+(126, 'Montpellier Triathlon', 140, 1020, 19),
+(127, 'Reims Escrime Club', 75, 1021, 20),
+(128, 'Reims Hockey Association', 100, 1021, 21),
+(129, 'Dijon Roller Club', 90, 1022, 22),
+(130, 'Dijon Tir a l Arc', 65, 1022, 23),
+(131, 'Tours Golf Academy', 115, 1023, 24),
+(132, 'Tours Equitation Club', 130, 1023, 25),
+(133, 'Rouen Football Formation', 210, 1024, 1),
+(134, 'Rouen Basket Club', 165, 1024, 2),
+(135, 'Caen Tennis Club', 125, 1025, 3),
+(136, 'Caen Natation', 150, 1025, 4),
+(137, 'Angers Rugby Club', 175, 1026, 5),
+(138, 'Angers Handball Association', 145, 1026, 6),
+(139, 'Metz Volley Club', 110, 1027, 7),
+(140, 'Metz Athletisme', 135, 1027, 8),
+(141, 'Besancon Judo Club', 100, 1028, 9),
+(142, 'Besancon Cyclisme', 85, 1028, 10);
 
 
 -- DETAILS CLUB
--- id_detail,adresse,site_web,email ,num_tel,desc_club,id_club
+-- id_detail, adresse, site_web, email, num_tel, desc_club, id_club
 
 INSERT IGNORE INTO Details_Club VALUES
-(
-    1,
-    '12 rue Victor Hugo',
-    'www.parisfc.fr',
-    'contact@parisfc.fr',
-    '0102030405',
-    'Club de football parisien',
-    101
-),
+(1, '12 rue Victor Hugo', 'www.parisfc.fr', 'contact@parisfc.fr', '0102030405', 'Club de football parisien', 101),
+(2, '8 avenue des Sports', 'www.lyonbasket.fr', 'contact@lyonbasket.fr', '0203040506', 'Club de basketball de Lyon', 102),
+(3, '25 boulevard Central', 'www.marseilletennis.fr', 'contact@marseilletennis.fr', '0304050607', 'Club de tennis marseillais', 103),
+(4, '15 rue du Stade', 'www.lillenatation.fr', 'contact@lillenatation.fr', '0405060708', 'Club de natation de Lille', 104),
+(5, '50 avenue Atlantique', 'www.bordeauxrugby.fr', 'contact@bordeauxrugby.fr', '0506070809', 'Club de rugby bordelais', 105),
+(6, '14 avenue de la Piscine', 'www.sarcellesnatation.fr', 'contact@sarcellesnatation.fr', '0611223344', 'Club de natation de Sarcelles pour tous niveaux', 106),
+(7, '2 rue des Champions', 'www.saintdenishand.fr', 'contact@saintdenishand.fr', '0622334455', 'Club de handball de Saint-Denis', 107),
+(8, '18 boulevard Voltaire', 'www.montreuilvolley.fr', 'contact@montreuilvolley.fr', '0633445566', 'Club de volleyball de Montreuil', 108),
+(9, '5 promenade des Sports', 'www.niceathletisme.fr', 'contact@niceathletisme.fr', '0644556677', 'Club dathletisme de Nice', 109),
+(10, '9 rue du Dojo', 'www.strasbourgjudo.fr', 'contact@strasbourgjudo.fr', '0655667788', 'Club de judo de Strasbourg', 110),
+(11, '11 rue Pablo Picasso', 'www.nanterrehand.fr', 'contact@nanterrehand.fr', '0661000001', 'Club de handball de Nanterre avec equipes jeunes et seniors.', 111),
+(12, '20 avenue du General Leclerc', 'www.creteiljudo.fr', 'contact@creteiljudo.fr', '0661000002', 'Club de judo de Creteil ouvert aux debutants et confirmes.', 112),
+(13, '9 boulevard de l Oise', 'www.cergytennis.fr', 'contact@cergytennis.fr', '0661000003', 'Club de tennis proposant cours collectifs et entrainements libres.', 113),
+(14, '7 rue Michelet', 'www.badargenteuil.fr', 'contact@badargenteuil.fr', '0661000004', 'Club de badminton loisir et competition a Argenteuil.', 114),
+(15, '4 rue Henri Barbusse', 'www.auberboxe.fr', 'contact@auberboxe.fr', '0661000005', 'Club de boxe avec seances techniques et preparation physique.', 115),
+(16, '31 chemin des Roches', 'www.toulouseescalade.fr', 'contact@toulouseescalade.fr', '0661000006', 'Club d escalade proposant des seances en salle et sorties encadrees.', 116),
+(17, '12 rue des Gymnastes', 'www.nantesgym.fr', 'contact@nantesgym.fr', '0661000007', 'Club de gymnastique pour enfants, adolescents et adultes.', 117),
+(18, '8 avenue de Bretagne', 'www.rennestt.fr', 'contact@rennestt.fr', '0661000008', 'Club de tennis de table avec entrainements loisirs et competition.', 118),
+(19, '15 avenue des Sports', 'www.cergyfootjeunes.fr', 'contact@cergyfootjeunes.fr', '0661000009', 'Club de football axe sur la formation des jeunes joueurs.', 119),
+(20, '22 rue du Basket', 'www.argenteuilbasket.fr', 'contact@argenteuilbasket.fr', '0661000010', 'Association de basketball avec equipes jeunes et adultes.', 120),
+(21, '30 avenue Jean Jaures', 'www.aubervilliersathle.fr', 'contact@aubervilliersathle.fr', '0661000011', 'Club d athletisme avec entrainements sur piste.', 121),
+(22, '6 rue de la Piscine', 'www.rennesnatation.fr', 'contact@rennesnatation.fr', '0661000012', 'Club de natation avec cours par niveau.', 122),
+(23, '10 rue de la Danse', 'www.grenobledanse.fr', 'contact@grenobledanse.fr', '0670000001', 'Club de danse proposant des cours modernes et classiques.', 123),
+(24, '14 avenue du Dojo', 'www.grenoblekarate.fr', 'contact@grenoblekarate.fr', '0670000002', 'Dojo de karate pour debutants et confirmes.', 124),
+(25, '8 quai des Sports', 'www.montpellieraviron.fr', 'contact@montpellieraviron.fr', '0670000003', 'Club d aviron avec entrainements sur plan d eau.', 125),
+(26, '21 rue du Triathlon', 'www.montpelliertri.fr', 'contact@montpelliertri.fr', '0670000004', 'Club de triathlon avec natation, course et velo.', 126),
+(27, '6 rue des Lames', 'www.reimsescrime.fr', 'contact@reimsescrime.fr', '0670000005', 'Club d escrime avec materiel disponible pour les nouveaux.', 127),
+(28, '18 avenue du Hockey', 'www.reimshockey.fr', 'contact@reimshockey.fr', '0670000006', 'Association de hockey sur gazon.', 128),
+(29, '2 boulevard Roller', 'www.dijonroller.fr', 'contact@dijonroller.fr', '0670000007', 'Club de roller loisir et competition.', 129),
+(30, '9 rue des Archers', 'www.dijontiralarc.fr', 'contact@dijontiralarc.fr', '0670000008', 'Club de tir a l arc avec cours encadres.', 130),
+(31, '5 allee du Golf', 'www.toursgolf.fr', 'contact@toursgolf.fr', '0670000009', 'Academie de golf avec parcours d initiation.', 131),
+(32, '12 route des Ecuries', 'www.toursequitation.fr', 'contact@toursequitation.fr', '0670000010', 'Club d equitation pour enfants et adultes.', 132),
+(33, '30 rue du Stade', 'www.rouenfoot.fr', 'contact@rouenfoot.fr', '0670000011', 'Club de football axe sur la formation.', 133),
+(34, '4 rue du Panier', 'www.rouenbasket.fr', 'contact@rouenbasket.fr', '0670000012', 'Club de basketball de Rouen.', 134),
+(35, '17 avenue Tennis', 'www.caentennis.fr', 'contact@caentennis.fr', '0670000013', 'Club de tennis avec cours collectifs.', 135),
+(36, '3 rue de la Piscine', 'www.caennatation.fr', 'contact@caennatation.fr', '0670000014', 'Club de natation par groupes de niveau.', 136),
+(37, '22 route du Rugby', 'www.angersrugby.fr', 'contact@angersrugby.fr', '0670000015', 'Club de rugby avec equipes jeunes et seniors.', 137),
+(38, '11 boulevard du Hand', 'www.angershand.fr', 'contact@angershand.fr', '0670000016', 'Association de handball locale.', 138),
+(39, '7 rue du Filet', 'www.metzvolley.fr', 'contact@metzvolley.fr', '0670000017', 'Club de volleyball loisir et competition.', 139),
+(40, '19 avenue de la Piste', 'www.metzathle.fr', 'contact@metzathle.fr', '0670000018', 'Club d athletisme avec entrainements hebdomadaires.', 140),
+(41, '24 rue du Tatami', 'www.besanconjudo.fr', 'contact@besanconjudo.fr', '0670000019', 'Club de judo de Besancon.', 141),
+(42, '13 route du Velo', 'www.besanconcyclisme.fr', 'contact@besanconcyclisme.fr', '0670000020', 'Club de cyclisme avec sorties encadrees.', 142);
 
-(
-    2,
-    '8 avenue des Sports',
-    'www.lyonbasket.fr',
-    'contact@lyonbasket.fr',
-    '0203040506',
-    'Club de basketball de Lyon',
-    102
-),
-
-(
-    3,
-    '25 boulevard Central',
-    'www.marseilletennis.fr',
-    'contact@marseilletennis.fr',
-    '0304050607',
-    'Club de tennis marseillais',
-    103
-),
-
-(
-    4,
-    '15 rue du Stade',
-    'www.lillenatation.fr',
-    'contact@lillenatation.fr',
-    '0405060708',
-    'Club de natation de Lille',
-    104
-),
-
-(
-    5,
-    '50 avenue Atlantique',
-    'www.bordeauxrugby.fr',
-    'contact@bordeauxrugby.fr',
-    '0506070809',
-    'Club de rugby bordelais',
-    105
-),
-(
-    6,
-    '14 avenue de la Piscine',
-    'www.sarcellesnatation.fr',
-    'contact@sarcellesnatation.fr',
-    '0611223344',
-    'Club de natation de Sarcelles pour tous niveaux',
-    106
-),
-
-(
-    7,
-    '2 rue des Champions',
-    'www.saintdenishand.fr',
-    'contact@saintdenishand.fr',
-    '0622334455',
-    'Club de handball de Saint-Denis',
-    107
-),
-
-(
-    8,
-    '18 boulevard Voltaire',
-    'www.montreuilvolley.fr',
-    'contact@montreuilvolley.fr',
-    '0633445566',
-    'Club de volleyball de Montreuil',
-    108
-),
-
-(
-    9,
-    '5 promenade des Sports',
-    'www.niceathletisme.fr',
-    'contact@niceathletisme.fr',
-    '0644556677',
-    'Club dathletisme de Nice',
-    109
-),
-
-(
-    10,
-    '9 rue du Dojo',
-    'www.strasbourgjudo.fr',
-    'contact@strasbourgjudo.fr',
-    '0655667788',
-    'Club de judo de Strasbourg',
-    110
-);
 
 -- EQUIPEMENTS
--- id_equipement,nom,type_equip,adresse,id_commune
+-- id_equipement, nom, type_equip, adresse, id_commune
 
 INSERT IGNORE INTO Equipements VALUES
-(
-    201,
-    'Stade Municipal Paris',
-    'Stade',
-    '10 rue du Stade',
-    1001
-),
-
-(
-    202,
-    'Gymnase Lyon Centre',
-    'Gymnase',
-    '22 avenue des Sports',
-    1002
-),
-
-(
-    203,
-    'Terrain Tennis Marseille',
-    'Terrain Tennis',
-    '5 rue du Tennis',
-    1003
-),
-
-(
-    204,
-    'Piscine Lille Nord',
-    'Piscine',
-    '18 boulevard Nord',
-    1004
-),
-
-(
-    205,
-    'Stade Rugby Bordeaux',
-    'Stade Rugby',
-    '7 avenue Atlantique',
-    1005
-),
+(201, 'Stade Municipal Paris', 'Stade', '10 rue du Stade', 1001),
+(202, 'Gymnase Lyon Centre', 'Gymnase', '22 avenue des Sports', 1002),
+(203, 'Terrain Tennis Marseille', 'Terrain Tennis', '5 rue du Tennis', 1003),
+(204, 'Piscine Lille Nord', 'Piscine', '18 boulevard Nord', 1004),
+(205, 'Stade Rugby Bordeaux', 'Stade Rugby', '7 avenue Atlantique', 1005),
 (206, 'Piscine Sarcelles Olympique', 'Piscine', '3 avenue de la Piscine', 1006),
-
 (207, 'Gymnase Saint-Denis Centre', 'Gymnase', '12 rue des Sports', 1007),
-
 (208, 'Salle Volley Montreuil', 'Salle Sportive', '8 avenue Voltaire', 1008),
-
 (209, 'Piste Athletisme Nice', 'Piste', '20 promenade des Sports', 1009),
-
 (210, 'Dojo Strasbourg', 'Dojo', '4 rue du Dojo', 1010),
-
 (211, 'Terrain Multisport Sarcelles', 'Terrain Multisport', '7 rue Victor Hugo', 1006),
-
 (212, 'Stade Municipal Saint-Denis', 'Stade', '15 avenue Republique', 1007),
-
 (213, 'Gymnase Montreuil Sud', 'Gymnase', '30 rue de Paris', 1008),
-
 (214, 'Centre Sportif Nice Ouest', 'Centre Sportif', '11 avenue Mediterranee', 1009),
-
 (215, 'Balle de Basket', 'Ballon', '9 rue des Moissons', 1010),
 (216, 'Ballon de Football', 'Ballon', '30 Rue des Bles', 1009),
 (217, 'Raquettes de Tennis', 'Raquette', '27 avenue Georges Brassens', 1003),
 (218, 'Raquette de Ping-Pong', 'Raquette', '31 avenue de 1962', 1008),
-(219, 'Chasubles', 'Vetement', '12 rue Louis XIV', 1009);
+(219, 'Chasubles', 'Vetement', '12 rue Louis XIV', 1009),
+(220, 'Gymnase Pablo Picasso', 'Gymnase', '11 rue Pablo Picasso', 1011),
+(221, 'Dojo Leclerc', 'Dojo', '20 avenue du General Leclerc', 1012),
+(222, 'Complexe Tennis Cergy', 'Terrain Tennis', '9 boulevard de l Oise', 1013),
+(223, 'Salle Michelet', 'Salle Badminton', '7 rue Michelet', 1014),
+(224, 'Salle de Boxe Aubervilliers', 'Salle de boxe', '4 rue Henri Barbusse', 1015),
+(225, 'Mur Escalade Toulouse', 'Salle Escalade', '31 chemin des Roches', 1016),
+(226, 'Gymnase des Gymnastes', 'Gymnase', '12 rue des Gymnastes', 1017),
+(227, 'Salle Tennis de Table Rennes', 'Salle Sportive', '8 avenue de Bretagne', 1018),
+(228, 'Stade Cergy Jeunes', 'Stade', '15 avenue des Sports', 1013),
+(229, 'Gymnase Basket Argenteuil', 'Gymnase', '22 rue du Basket', 1014),
+(230, 'Piste Jean Jaures Aubervilliers', 'Piste', '30 avenue Jean Jaures', 1015),
+(231, 'Piscine Municipale Rennes', 'Piscine', '6 rue de la Piscine', 1018),
+(232, 'Salle de Danse Grenoble', 'Salle de danse', '10 rue de la Danse', 1019),
+(233, 'Dojo Grenoble Centre', 'Dojo', '14 avenue du Dojo', 1019),
+(234, 'Base Nautique Montpellier', 'Base nautique', '8 quai des Sports', 1020),
+(235, 'Complexe Triathlon Montpellier', 'Complexe sportif', '21 rue du Triathlon', 1020),
+(236, 'Salle Escrime Reims', 'Salle d escrime', '6 rue des Lames', 1021),
+(237, 'Terrain Hockey Reims', 'Terrain hockey', '18 avenue du Hockey', 1021),
+(238, 'Skatepark Dijon', 'Skatepark', '2 boulevard Roller', 1022),
+(239, 'Stand Tir Arc Dijon', 'Stand de tir', '9 rue des Archers', 1022),
+(240, 'Golf Municipal Tours', 'Golf', '5 allee du Golf', 1023),
+(241, 'Centre Equestre Tours', 'Centre equestre', '12 route des Ecuries', 1023),
+(242, 'Stade Rouen Formation', 'Stade', '30 rue du Stade', 1024),
+(243, 'Gymnase Rouen Basket', 'Gymnase', '4 rue du Panier', 1024),
+(244, 'Courts Tennis Caen', 'Terrain Tennis', '17 avenue Tennis', 1025),
+(245, 'Piscine Caen Centre', 'Piscine', '3 rue de la Piscine', 1025),
+(246, 'Stade Rugby Angers', 'Stade Rugby', '22 route du Rugby', 1026),
+(247, 'Gymnase Hand Angers', 'Gymnase', '11 boulevard du Hand', 1026),
+(248, 'Salle Volley Metz', 'Salle Sportive', '7 rue du Filet', 1027),
+(249, 'Piste Athletisme Metz', 'Piste', '19 avenue de la Piste', 1027),
+(250, 'Dojo Besancon', 'Dojo', '24 rue du Tatami', 1028),
+(251, 'Circuit Cyclisme Besancon', 'Circuit velo', '13 route du Velo', 1028);
 
 
 -- LICENCIES
--- id_licencies,nom,prenom ,email
+-- id_licencies, nom, prenom, email
 
 INSERT IGNORE INTO Licencies VALUES
 (301, 'Dupont', 'Alice', 'alice.dupont@mail.fr'),
@@ -242,202 +240,156 @@ INSERT IGNORE INTO Licencies VALUES
 (315, 'Elhosary', 'Ramy', 'ramy.elh@mail.fr'),
 (316, 'Idzim', 'Marwa', 'mrw.idz@mail.fr'),
 (317, 'Andrianandrainy', 'Jim', 'jim.shan@mail.fr'),
-(318, 'Mbappe', 'Kyky', 'kyky.mbappe@mail.fr');
+(318, 'Mbappe', 'Kyky', 'kyky.mbappe@mail.fr'),
+(319, 'Durand', 'Camille', 'camille.durand@mail.fr'),
+(320, 'Leroy', 'Nathan', 'nathan.leroy@mail.fr'),
+(321, 'Morel', 'Sarah', 'sarah.morel@mail.fr'),
+(322, 'Garnier', 'Adam', 'adam.garnier@mail.fr'),
+(323, 'Andre', 'Hugo', 'hugo.andre@mail.fr'),
+(324, 'Renaud', 'Emma', 'emma.renaud@mail.fr'),
+(325, 'Colin', 'Ethan', 'ethan.colin@mail.fr'),
+(326, 'Henry', 'Lea', 'lea.henry@mail.fr'),
+(327, 'Masson', 'Ilyes', 'ilyes.masson@mail.fr'),
+(328, 'Marchand', 'Maya', 'maya.marchand@mail.fr'),
+(329, 'Duval', 'Amine', 'amine.duval@mail.fr'),
+(330, 'Giraud', 'Lena', 'lena.giraud@mail.fr'),
+(331, 'Lopez', 'Sami', 'sami.lopez@mail.fr'),
+(332, 'Perrin', 'Alice', 'alice.perrin@mail.fr'),
+(333, 'Robin', 'Rayan', 'rayan.robin@mail.fr'),
+(334, 'Clement', 'Mila', 'mila.clement@mail.fr'),
+(335, 'Morin', 'Nael', 'nael.morin@mail.fr'),
+(336, 'Gauthier', 'Jade', 'jade.gauthier@mail.fr'),
+(337, 'Barbier', 'Nina', 'nina.barbier@mail.fr'),
+(338, 'Arnaud', 'Elias', 'elias.arnaud@mail.fr'),
+(339, 'Noel', 'Yasmine', 'yasmine.noel@mail.fr'),
+(340, 'Meunier', 'Ibrahim', 'ibrahim.meunier@mail.fr'),
+(341, 'Boyer', 'Clara', 'clara.boyer@mail.fr'),
+(342, 'Caron', 'Sofiane', 'sofiane.caron@mail.fr'),
+(343, 'Aubert', 'Nadia', 'nadia.aubert@mail.fr'),
+(344, 'Leclerc', 'Kamel', 'kamel.leclerc@mail.fr'),
+(345, 'Pires', 'Eva', 'eva.pires@mail.fr'),
+(346, 'Renard', 'Mathis', 'mathis.renard@mail.fr'),
+(347, 'Riviere', 'Lina', 'lina.riviere@mail.fr'),
+(348, 'Meyer', 'Noam', 'noam.meyer@mail.fr'),
+(349, 'Dumont', 'Assia', 'assia.dumont@mail.fr'),
+(350, 'Fontaine', 'Eden', 'eden.fontaine@mail.fr');
+
 
 
 -- SEANCES
--- id_seance, date_seance, heure_debut, heure_fin,niveau, id_club, id_equipement
+-- id_seance, date_seance, heure_debut, heure_fin, niveau, id_club, id_equipement
 
 INSERT IGNORE INTO Seances VALUES
-(
-    401,
-    '2026-01-10',
-    '18:00:00',
-    '20:00:00',
-    'Seniors',
-    101,
-    201
-),
+(401, '2026-01-10', '18:00:00', '20:00:00', 'Seniors', 101, 201),
+(402, '2026-01-11', '17:00:00', '19:00:00', 'Debutants', 102, 202),
+(403, '2026-01-12', '16:00:00', '18:00:00', 'Intermediaire', 103, 203),
+(404, '2026-01-13', '19:00:00', '21:00:00', 'Seniors', 104, 204),
+(405, '2026-01-14', '18:30:00', '20:30:00', 'Competition', 105, 205),
+(406, '2026-01-15', '18:00:00', '20:00:00', 'Competition', 106, 206),
+(407, '2026-01-16', '17:30:00', '19:30:00', 'Seniors', 107, 207),
+(408, '2026-01-17', '16:00:00', '18:00:00', 'Debutants', 108, 208),
+(409, '2026-01-18', '18:30:00', '20:30:00', 'Intermediaire', 109, 209),
+(410, '2026-01-19', '19:00:00', '21:00:00', 'Competition', 110, 210),
+(411, '2026-01-20', '18:00:00', '20:00:00', 'Seniors', 111, 220),
+(412, '2026-01-21', '17:30:00', '19:00:00', 'Debutants', 112, 221),
+(413, '2026-01-22', '16:00:00', '18:00:00', 'Tous niveaux', 113, 222),
+(414, '2026-01-23', '18:30:00', '20:00:00', 'Intermediaire', 114, 223),
+(415, '2026-01-24', '19:00:00', '21:00:00', 'Competition', 115, 224),
+(416, '2026-01-25', '10:00:00', '12:00:00', 'Debutants', 116, 225),
+(417, '2026-01-26', '14:00:00', '16:00:00', 'Tous niveaux', 117, 226),
+(418, '2026-01-27', '18:00:00', '19:30:00', 'Seniors', 118, 227),
+(419, '2026-01-28', '17:00:00', '19:00:00', 'Debutants', 119, 228),
+(420, '2026-01-29', '19:00:00', '21:00:00', 'Intermediaire', 120, 229),
+(421, '2026-01-30', '18:00:00', '20:00:00', 'Competition', 121, 230),
+(422, '2026-01-31', '16:30:00', '18:00:00', 'Tous niveaux', 122, 231),
+(423, '2026-02-02', '18:00:00', '20:00:00', 'Seniors', 101, 201),
+(424, '2026-02-03', '17:00:00', '19:00:00', 'Debutants', 106, 206),
+(425, '2026-02-04', '19:00:00', '21:00:00', 'Competition', 108, 208),
+(426, '2026-02-05', '18:30:00', '20:00:00', 'Intermediaire', 110, 210),
+(427, '2026-02-06', '18:00:00', '19:30:00', 'Debutants', 123, 232),
+(428, '2026-02-07', '19:00:00', '21:00:00', 'Intermediaire', 124, 233),
+(429, '2026-02-08', '10:00:00', '12:00:00', 'Tous niveaux', 125, 234),
+(430, '2026-02-09', '18:30:00', '20:30:00', 'Competition', 126, 235),
+(431, '2026-02-10', '17:00:00', '19:00:00', 'Debutants', 127, 236),
+(432, '2026-02-11', '19:00:00', '21:00:00', 'Seniors', 128, 237),
+(433, '2026-02-12', '16:00:00', '18:00:00', 'Tous niveaux', 129, 238),
+(434, '2026-02-13', '18:00:00', '20:00:00', 'Intermediaire', 130, 239),
+(435, '2026-02-14', '09:00:00', '11:00:00', 'Debutants', 131, 240),
+(436, '2026-02-15', '14:00:00', '16:00:00', 'Tous niveaux', 132, 241),
+(437, '2026-02-16', '18:00:00', '20:00:00', 'Seniors', 133, 242),
+(438, '2026-02-17', '17:30:00', '19:00:00', 'Debutants', 134, 243),
+(439, '2026-02-18', '16:00:00', '18:00:00', 'Intermediaire', 135, 244),
+(440, '2026-02-19', '18:30:00', '20:30:00', 'Tous niveaux', 136, 245),
+(441, '2026-02-20', '19:00:00', '21:00:00', 'Seniors', 137, 246),
+(442, '2026-02-21', '18:00:00', '20:00:00', 'Competition', 138, 247),
+(443, '2026-02-22', '15:00:00', '17:00:00', 'Debutants', 139, 248),
+(444, '2026-02-23', '18:00:00', '20:00:00', 'Tous niveaux', 140, 249),
+(445, '2026-02-24', '17:00:00', '19:00:00', 'Intermediaire', 141, 250),
+(446, '2026-02-25', '09:30:00', '11:30:00', 'Seniors', 142, 251);
 
-(
-    402,
-    '2026-01-11',
-    '17:00:00',
-    '19:00:00',
-    'Debutants',
-    102,
-    202
-),
-
-(
-    403,
-    '2026-01-12',
-    '16:00:00',
-    '18:00:00',
-    'Intermediaire',
-    103,
-    203
-),
-
-(
-    404,
-    '2026-01-13',
-    '19:00:00',
-    '21:00:00',
-    'Seniors',
-    104,
-    204
-),
-
-(
-    405,
-    '2026-01-14',
-    '18:30:00',
-    '20:30:00',
-    'Competition',
-    105,
-    205
-),
-(
-    406,
-    '2026-01-15',
-    '18:00:00',
-    '20:00:00',
-    'Competition',
-    106,
-    206
-),
-
-(
-    407,
-    '2026-01-16',
-    '17:30:00',
-    '19:30:00',
-    'Seniors',
-    107,
-    207
-),
-
-(
-    408,
-    '2026-01-17',
-    '16:00:00',
-    '18:00:00',
-    'Debutants',
-    108,
-    208
-),
-
-(
-    409,
-    '2026-01-18',
-    '18:30:00',
-    '20:30:00',
-    'Intermediaire',
-    109,
-    209
-),
-
-(
-    410,
-    '2026-01-19',
-    '19:00:00',
-    '21:00:00',
-    'Competition',
-    110,
-    210
-);
 
 
 -- INSCRIPTIONS
 -- id_inscription, nom, prenom, email, date_inscription, id_seance
 
 INSERT IGNORE INTO Inscriptions VALUES
-(
-    501,
-    'Dupont',
-    'Alice',
-    'alice.dupont@mail.fr',
-    '2025-09-01',
-    401
-),
-
-(
-    502,
-    'Martin',
-    'Lucas',
-    'lucas.martin@mail.fr',
-    '2025-09-02',
-    402
-),
-
-(
-    503,
-    'Bernard',
-    'Emma',
-    'emma.bernard@mail.fr',
-    '2025-09-03',
-    403
-),
-
-(
-    504,
-    'Petit',
-    'Tom',
-    'tom.petit@mail.fr',
-    '2025-09-04',
-    404
-),
-
-(
-    505,
-    'Garcia',
-    'Lina',
-    'lina.garcia@mail.fr',
-    '2025-09-05',
-    405
-),
-(
-    506,
-    'Moreau',
-    'Julie',
-    'julie.moreau@mail.fr',
-    '2025-09-06',
-    406
-),
-
-(
-    507,
-    'Lefevre',
-    'Nathan',
-    'nathan.lefevre@mail.fr',
-    '2025-09-07',
-    407
-),
-
-(
-    508,
-    'Roux',
-    'Sarah',
-    'sarah.roux@mail.fr',
-    '2025-09-08',
-    408
-),
-
-(
-    509,
-    'Faure',
-    'Enzo',
-    'enzo.faure@mail.fr',
-    '2025-09-09',
-    409
-),
-
-(
-    510,
-    'Mercier',
-    'Camille',
-    'camille.mercier@mail.fr',
-    '2025-09-10',
-    410
-);
+(501, 'Dupont', 'Alice', 'alice.dupont@mail.fr', '2025-09-01', 401),
+(502, 'Martin', 'Lucas', 'lucas.martin@mail.fr', '2025-09-02', 402),
+(503, 'Bernard', 'Emma', 'emma.bernard@mail.fr', '2025-09-03', 403),
+(504, 'Petit', 'Tom', 'tom.petit@mail.fr', '2025-09-04', 404),
+(505, 'Garcia', 'Lina', 'lina.garcia@mail.fr', '2025-09-05', 405),
+(506, 'Moreau', 'Julie', 'julie.moreau@mail.fr', '2025-09-06', 406),
+(507, 'Lefevre', 'Nathan', 'nathan.lefevre@mail.fr', '2025-09-07', 407),
+(508, 'Roux', 'Sarah', 'sarah.roux@mail.fr', '2025-09-08', 408),
+(509, 'Faure', 'Enzo', 'enzo.faure@mail.fr', '2025-09-09', 409),
+(510, 'Mercier', 'Camille', 'camille.mercier@mail.fr', '2025-09-10', 410),
+(511, 'Durand', 'Camille', 'camille.durand@mail.fr', '2026-01-11', 411),
+(512, 'Leroy', 'Nathan', 'nathan.leroy@mail.fr', '2026-01-11', 411),
+(513, 'Morel', 'Sarah', 'sarah.morel@mail.fr', '2026-01-12', 412),
+(514, 'Garnier', 'Adam', 'adam.garnier@mail.fr', '2026-01-13', 413),
+(515, 'Andre', 'Hugo', 'hugo.andre@mail.fr', '2026-01-14', 414),
+(516, 'Renaud', 'Emma', 'emma.renaud@mail.fr', '2026-01-15', 415),
+(517, 'Colin', 'Ethan', 'ethan.colin@mail.fr', '2026-01-16', 416),
+(518, 'Henry', 'Lea', 'lea.henry@mail.fr', '2026-01-17', 417),
+(519, 'Masson', 'Ilyes', 'ilyes.masson@mail.fr', '2026-01-18', 418),
+(520, 'Marchand', 'Maya', 'maya.marchand@mail.fr', '2026-01-19', 419),
+(521, 'Duval', 'Amine', 'amine.duval@mail.fr', '2026-01-20', 420),
+(522, 'Giraud', 'Lena', 'lena.giraud@mail.fr', '2026-01-21', 421),
+(523, 'Dupont', 'Alice', 'alice.dupont@mail.fr', '2026-01-22', 422),
+(524, 'Martin', 'Lucas', 'lucas.martin@mail.fr', '2026-01-23', 423),
+(525, 'Bernard', 'Emma', 'emma.bernard@mail.fr', '2026-01-24', 424),
+(526, 'Petit', 'Tom', 'tom.petit@mail.fr', '2026-01-25', 425),
+(527, 'Garcia', 'Lina', 'lina.garcia@mail.fr', '2026-01-26', 426),
+(528, 'Moreau', 'Julie', 'julie.moreau@mail.fr', '2026-01-27', 411),
+(529, 'Lefevre', 'Nathan', 'nathan.lefevre@mail.fr', '2026-01-28', 412),
+(530, 'Roux', 'Sarah', 'sarah.roux@mail.fr', '2026-01-29', 413),
+(531, 'Lopez', 'Sami', 'sami.lopez@mail.fr', '2026-02-01', 427),
+(532, 'Perrin', 'Alice', 'alice.perrin@mail.fr', '2026-02-01', 427),
+(533, 'Robin', 'Rayan', 'rayan.robin@mail.fr', '2026-02-02', 428),
+(534, 'Clement', 'Mila', 'mila.clement@mail.fr', '2026-02-03', 429),
+(535, 'Morin', 'Nael', 'nael.morin@mail.fr', '2026-02-04', 430),
+(536, 'Gauthier', 'Jade', 'jade.gauthier@mail.fr', '2026-02-05', 431),
+(537, 'Barbier', 'Nina', 'nina.barbier@mail.fr', '2026-02-06', 432),
+(538, 'Arnaud', 'Elias', 'elias.arnaud@mail.fr', '2026-02-07', 433),
+(539, 'Noel', 'Yasmine', 'yasmine.noel@mail.fr', '2026-02-08', 434),
+(540, 'Meunier', 'Ibrahim', 'ibrahim.meunier@mail.fr', '2026-02-09', 435),
+(541, 'Boyer', 'Clara', 'clara.boyer@mail.fr', '2026-02-10', 436),
+(542, 'Caron', 'Sofiane', 'sofiane.caron@mail.fr', '2026-02-11', 437),
+(543, 'Aubert', 'Nadia', 'nadia.aubert@mail.fr', '2026-02-12', 438),
+(544, 'Leclerc', 'Kamel', 'kamel.leclerc@mail.fr', '2026-02-13', 439),
+(545, 'Pires', 'Eva', 'eva.pires@mail.fr', '2026-02-14', 440),
+(546, 'Renard', 'Mathis', 'mathis.renard@mail.fr', '2026-02-15', 441),
+(547, 'Riviere', 'Lina', 'lina.riviere@mail.fr', '2026-02-16', 442),
+(548, 'Meyer', 'Noam', 'noam.meyer@mail.fr', '2026-02-17', 443),
+(549, 'Dumont', 'Assia', 'assia.dumont@mail.fr', '2026-02-18', 444),
+(550, 'Fontaine', 'Eden', 'eden.fontaine@mail.fr', '2026-02-19', 445),
+(551, 'Lopez', 'Sami', 'sami.lopez@mail.fr', '2026-02-20', 446),
+(552, 'Perrin', 'Alice', 'alice.perrin@mail.fr', '2026-02-21', 428),
+(553, 'Robin', 'Rayan', 'rayan.robin@mail.fr', '2026-02-22', 430),
+(554, 'Clement', 'Mila', 'mila.clement@mail.fr', '2026-02-23', 432),
+(555, 'Morin', 'Nael', 'nael.morin@mail.fr', '2026-02-24', 434),
+(556, 'Gauthier', 'Jade', 'jade.gauthier@mail.fr', '2026-02-25', 436),
+(557, 'Barbier', 'Nina', 'nina.barbier@mail.fr', '2026-02-26', 438),
+(558, 'Arnaud', 'Elias', 'elias.arnaud@mail.fr', '2026-02-27', 440),
+(559, 'Noel', 'Yasmine', 'yasmine.noel@mail.fr', '2026-02-28', 442),
+(560, 'Meunier', 'Ibrahim', 'ibrahim.meunier@mail.fr', '2026-03-01', 444);
