@@ -180,6 +180,10 @@ $messageErreur = "";
     <?php if (!empty($messageSucces)): ?>
         <div class="message-succes">
             <?= htmlspecialchars($messageSucces) ?>
+            <br>
+            <a href="inscriptions.php?id_seance=<?= htmlspecialchars($info_seance['id_seance']) ?>">
+                Voir les inscriptions de cette séance
+            </a>
         </div>
     <?php endif; ?>
 
