@@ -54,4 +54,9 @@ $sports = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
      <script src="../assets/js/script.js"></script>
 </body>
+<footer class="footer">
+    <hr>
+    <p>© 2026 - Projet SAE Programmation WEB - Association sportive</p>
+    <p>Réalisé par Marwa Idzim et Ramy ELHOSARY - Sup Galilée</p>
+</footer>
 </html>
