@@ -94,12 +94,15 @@ $clubs = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     <section class="clubs">
         <?php foreach($clubs as $club):?>
+        <a href="detail_club.php?id_club=<?= htmlspecialchars($club['id_club']) ?>" class="club-link">
         <div class="club-card">
             <h2><?= htmlspecialchars($club['nom']) ?></h2>
             <p> Commune: <?= htmlspecialchars($club['commune']) ?></p>
             <p> Sport: <?= htmlspecialchars($club['sport']) ?></p>
             <p> Nombre de licenciés: <?= htmlspecialchars($club['nb_licencies']) ?></p>
+            <p class="voir-detail">Voir les détails du club →</p>
         </div>
+        </a>
         <?php endforeach; ?>
 
         
