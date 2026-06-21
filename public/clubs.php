@@ -1,6 +1,18 @@
 <?php
 require "../config/db.php";
+/*Si id_commune existe alors on le met dedans, sinon on met une chaine de caractères vides*/ 
+$idCommune = $_GET["id_commune"] ?? "";
 
+/* Requête pour remplir la liste des communes */
+$sqlCommunes = "SELECT id_commune, nom 
+                FROM Communes
+                ORDER BY nom";
+
+$stmtCommunes = $pdo->query($sqlCommunes);
+$communes = $stmtCommunes->fetchAll(PDO::FETCH_ASSOC);
+
+/* On récupère les clubs avec leur commune, leur sport,
+   et le nombre de licenciés inscrits à au moins une séance du club */
 $sql = "SELECT 
             cl.id_club,
             cl.nom,
@@ -11,12 +23,31 @@ $sql = "SELECT
         JOIN Communes co ON cl.id_commune = co.id_commune
         JOIN Sports sp ON cl.id_sport = sp.id_sport
         LEFT JOIN Seances s ON cl.id_club = s.id_club
-        LEFT JOIN Inscriptions i ON s.id_seance = i.id_seance
-        GROUP BY cl.id_club, cl.nom, co.nom, sp.nom
-        ORDER BY cl.nom
-        ";
-$stmt = $pdo->query($sql);
+        LEFT JOIN Inscriptions i ON s.id_seance = i.id_seance";
+
+    /* Si une commune est choisie, on ajoute une condition */
+    if ($idCommune !== "") {
+        $sql .= " WHERE cl.id_commune = :id_commune";
+    }
+
+    $sql .= " GROUP BY cl.id_club, cl.nom, co.nom, sp.nom
+            ORDER BY cl.nom";
+
+    $stmt = $pdo->prepare($sql);
+
+    if ($idCommune !== "") {
+        $stmt->execute([
+            "id_commune" => $idCommune
+        ]);
+    } 
+    else {
+        $stmt->execute();
+    }
+
 $clubs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -43,6 +74,23 @@ $clubs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <h1>Titre</h1>
     <p>Description</p>
+
+    <form method="get" class="filter-form">
+    <label for="id_commune">Filtrer par commune :</label>
+
+    <select name="id_commune" id="id_commune">
+        <option value="">Toutes les communes</option>
+
+        <?php foreach ($communes as $commune): ?>
+            <option value="<?= htmlspecialchars($commune['id_commune']) ?>"
+                <?= ($idCommune == $commune['id_commune']) ? 'selected' : '' ?>>
+                <?= htmlspecialchars($commune['nom']) ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+
+    <button type="submit">Filtrer</button>
+</form>
     
     <section class="clubs">
         <?php foreach($clubs as $club):?>
