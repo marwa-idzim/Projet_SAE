@@ -52,7 +52,7 @@ $equipements = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <h1>Equipements mis à disposition pour vos clubs !</h1>
     <p>Trouvez tous les infos qui concernent les emprunts d'équipements de chaque commune !</p>
     
-    <table >
+    <table border="1">
         <tr >
             <th> Nom </th>
             <th> Type de l'equipement </th>

@@ -1,7 +1,11 @@
 <?php
 require "../config/db.php";
 
-$idSeance= $_GET["id_seance"];
+$idSeance = $_GET["id_seance"] ?? null;
+
+if ($idSeance === null) {
+    die("Aucune séance sélectionnée.");
+}
 $sql = "SELECT 
             s.id_seance,
             s.date_seance,
@@ -85,40 +89,84 @@ $messageErreur = "";
             $nom = $_POST["nom"];
             $prenom = $_POST["prenom"];
             $email = $_POST["email"];
-            $date_inscription=date("Y-m-d");
-            $sql = "SELECT COUNT(*) FROM Inscriptions";
-            $stmt = $pdo->query($sql);
-            $id_inscription = $stmt->fetchColumn()+501;
 
-            $sql = "SELECT COUNT(id_inscription) 
-                    FROM Inscriptions
+            $sql = "SELECT COUNT(*) 
+                    FROM Licencies
                     WHERE nom='$nom'
                     AND prenom='$prenom'
                     AND email='$email'
                     ";
             $stmt = $pdo->query($sql);
-            $deja_inscrit=$stmt->fetchColumn();
+            $est_licencie=$stmt->fetchColumn();
+            $id_licencies=0;
+            if((int)$est_licencie===0){
+                
+                $sql = "SELECT MAX(id_licencies) FROM Licencies";
+                $stmt = $pdo->query($sql);
+                $id_licencies=($stmt->fetchColumn()?? 300) + 1;
+                $sql = "INSERT INTO Licencies 
+                        VALUES(:id_licencies, :nom, :prenom, :email)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([
+                    "id_licencies"=>$id_licencies,
+                    "nom"=>$nom,
+                    "prenom"=>$prenom,
+                    "email"=>$email,
+                ]);
+            }
+            else{
+                $sql = "SELECT id_licencies
+                        FROM Licencies
+                        WHERE nom = :nom
+                        AND prenom = :prenom
+                        AND email = :email";
 
-            if($deja_inscrit===0){
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([
+                    "nom" => $nom,
+                    "prenom" => $prenom,
+                    "email" => $email
+                ]);
+
+                $id_licencies = $stmt->fetchColumn();
+            }
+                
+
+            $sql = "SELECT COUNT(id_inscription)
+                    FROM Inscriptions
+                    WHERE id_seance = :id_seance
+                    AND id_licencies = :id_licencies";
+
+            $stmt = $pdo->prepare($sql);
+
+            $stmt->execute([
+                "id_seance" => $info_seance["id_seance"],
+                "id_licencies" => $id_licencies
+            ]);
+
+            $deja_inscrit = $stmt->fetchColumn();
+
+            if((int)$deja_inscrit===0){
                 $messageSucces="Votre inscription à la séance a bien été prise en compte.";
+
+                $date_inscription=date("Y-m-d");
+                $sql = "SELECT MAX(id_inscription) FROM Inscriptions";
+                $stmt = $pdo->query($sql);
+                $id_inscription = ($stmt->fetchColumn()?? 500)+1;
 
                 $sql = "INSERT INTO Inscriptions 
                         VALUES(
                             :id_inscription, 
-                            :nom, 
-                            :prenom, 
-                            :email, 
-                            :date_inscription, 
+                            :date_inscription,
+                            :id_licencies, 
                             :id_seance
                             )
                         ";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute([
                     "id_inscription"=>$id_inscription,
-                    "nom"=>$nom,
-                    "prenom"=>$prenom,
-                    "email"=>$email,
                     "date_inscription"=>$date_inscription,
+                    "id_licencies"=>$id_licencies,
                     "id_seance"=>$info_seance['id_seance'],
                 ]);
     
