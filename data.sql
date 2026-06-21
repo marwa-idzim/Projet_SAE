@@ -1,7 +1,7 @@
 USE association_sportive;
 
 -- COMMUNES
-INSERT INTO Communes VALUES
+INSERT IGNORE INTO Communes VALUES
 (1001, 'Paris', 75000, 75, 'Ile-de-France'),
 (1002, 'Lyon', 69000, 69, 'Auvergne-Rhone-Alpes'),
 (1003, 'Marseille', 13000, 13, 'Provence-Alpes-Cote dAzur'),
@@ -32,7 +32,7 @@ INSERT INTO Communes VALUES
 (1028, 'Besancon', 25000, 25, 'Bourgogne-Franche-Comte');
 
 -- SPORTS
-INSERT INTO Sports VALUES
+INSERT IGNORE INTO Sports VALUES
 (1, 'Football', 'FFF'),
 (2, 'Basketball', 'FFBB'),
 (3, 'Tennis', 'FFT'),
@@ -60,7 +60,7 @@ INSERT INTO Sports VALUES
 (25, 'Equitation', 'FFEquestre');
 
 -- CLUBS : plus de nb_licencies ici, on le calcule avec les inscriptions
-INSERT INTO Clubs VALUES
+INSERT IGNORE INTO Clubs VALUES
 (101, 'Paris Football Club', 1001, 1),
 (102, 'Lyon Basket Academy', 1002, 2),
 (103, 'Marseille Tennis Club', 1003, 3),
@@ -105,7 +105,7 @@ INSERT INTO Clubs VALUES
 (142, 'Besancon Cyclisme', 1028, 10);
 
 -- DETAILS_CLUB
-INSERT INTO Details_Club VALUES
+INSERT IGNORE INTO Details_Club VALUES
 (1, '12 rue Victor Hugo', 'www.parisfc.fr', 'contact@parisfc.fr', '0102030405', 'Club de football parisien', 101),
 (2, '8 avenue des Sports', 'www.lyonbasket.fr', 'contact@lyonbasket.fr', '0203040506', 'Club de basketball de Lyon', 102),
 (3, '25 boulevard Central', 'www.marseilletennis.fr', 'contact@marseilletennis.fr', '0304050607', 'Club de tennis marseillais', 103),
@@ -150,7 +150,7 @@ INSERT INTO Details_Club VALUES
 (42, '13 route du Velo', 'www.besanconcyclisme.fr', 'contact@besanconcyclisme.fr', '0670000020', 'Club de cyclisme avec sorties encadrees.', 142);
 
 -- EQUIPEMENTS
-INSERT INTO Equipements VALUES
+INSERT IGNORE INTO Equipements VALUES
 (201, 'Stade Municipal Paris', 'Stade', '10 rue du Stade', 1001),
 (202, 'Gymnase Lyon Centre', 'Gymnase', '22 avenue des Sports', 1002),
 (203, 'Terrain Tennis Marseille', 'Terrain Tennis', '5 rue du Tennis', 1003),
@@ -204,7 +204,7 @@ INSERT INTO Equipements VALUES
 (251, 'Circuit Cyclisme Besancon', 'Circuit velo', '13 route du Velo', 1028);
 
 -- LICENCIES : pas de id_club ici, un licencié peut aller à plusieurs clubs via ses inscriptions
-INSERT INTO Licencies VALUES
+INSERT IGNORE INTO Licencies VALUES
 (301, 'Dupont', 'Alice', 'alice.dupont@mail.fr'),
 (302, 'Martin', 'Lucas', 'lucas.martin@mail.fr'),
 (303, 'Bernard', 'Emma', 'emma.bernard@mail.fr'),
@@ -257,7 +257,7 @@ INSERT INTO Licencies VALUES
 (350, 'Fontaine', 'Eden', 'eden.fontaine@mail.fr');
 
 -- SEANCES
-INSERT INTO Seances VALUES
+INSERT IGNORE INTO Seances VALUES
 (401, '2026-01-10', '18:00:00', '20:00:00', 'Seniors', 101, 201),
 (402, '2026-01-11', '17:00:00', '19:00:00', 'Debutants', 102, 202),
 (403, '2026-01-12', '16:00:00', '18:00:00', 'Intermediaire', 103, 203),
@@ -306,7 +306,7 @@ INSERT INTO Seances VALUES
 (446, '2026-02-25', '09:30:00', '11:30:00', 'Seniors', 142, 251);
 
 -- INSCRIPTIONS : maintenant on met id_licencies et id_seance, pas nom/prenom/email
-INSERT INTO Inscriptions VALUES
+INSERT IGNORE INTO Inscriptions VALUES
 (501, '2025-09-01', 301, 401),
 (502, '2025-09-02', 302, 402),
 (503, '2025-09-03', 303, 403),
