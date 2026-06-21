@@ -1,61 +1,133 @@
-/* On fait en sorte que chaque élément contienne sa marge interne avec box-sizing et on retire les traits qui sont par défaut sur les liens */
+/* =========================================================
+   STYLE GENERAL DU SITE
+   Palette choisie :
+   - vert : côté sport / terrain / nature
+   - beige : plus chaleureux et moins "application IA"
+   - orange doux : petite touche dynamique
+   ========================================================= */
+
+/* Variables CSS : ça permet de changer les couleurs facilement */
+:root {
+    --primary: #2f6f4e;        /* vert principal */
+    --primary-dark: #24583e;   /* vert plus foncé pour les hover */
+    --secondary: #f4a261;      /* orange doux */
+    --background: #f7f3ea;     /* fond beige clair */
+    --card: #fffdf8;           /* fond des cartes */
+    --text: #243127;           /* texte principal */
+    --muted: #6b7280;          /* texte secondaire */
+    --border: #e5dccb;         /* bordures douces */
+    --danger-bg: #fee2e2;
+    --danger-text: #991b1b;
+    --success-bg: #dcfce7;
+    --success-text: #166534;
+}
+
+/* On retire les marges par défaut et on simplifie le calcul des tailles */
 * {
-  box-sizing: border-box;
-  text-decoration: none;
+    box-sizing: border-box;
+    text-decoration: none;
 }
 
-/* On modernise notre balise de navigation avec une petite ombre. On mets tous les éléments du menu les uns bien à côté des autres avec flexbox (display: flex) */
+/* Style général de la page */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* Les titres ont une couleur plus marquée */
+h1, h2, h3 {
+    color: var(--primary-dark);
+}
+
+/* Style général des paragraphes */
+p {
+    color: var(--muted);
+}
+
+/* =========================================================
+   MENU DE NAVIGATION
+   ========================================================= */
+
+/* Le menu est centré, arrondi, avec une ombre légère */
 nav {
-  background-color: #fff;
-  padding: 0 20px;
-  border-radius: 40px;
-  box-shadow: 0 10px 40px rgba(159, 162, 177, .8);
-  display: flex;
-  overflow: hidden;
-  overflow-x: auto;
-  position: relative;
+    background-color: var(--card);
+    padding: 0 20px;
+    margin: 22px auto;
+    width: calc(100% - 60px);
+    max-width: 1150px;
+    border-radius: 40px;
+    box-shadow: 0 6px 20px rgba(47, 111, 78, 0.14);
+    display: flex;
+    overflow: hidden;
+    overflow-x: auto;
+    position: relative;
+    border: 1px solid var(--border);
 }
 
-/* On stylise chaque élément */
+/* Chaque élément du menu */
 .nav-item {
-  color: #83818c;
-  font-family: arial, sans-serif;
-  padding: 20px;
-  margin: 0 6px;
-  position: relative;
+    color: var(--muted);
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 18px 16px;
+    margin: 0 4px;
+    position: relative;
+    white-space: nowrap;
+    font-weight: 600;
 }
 
-/* Ici on met juste un petit élément avant chaque élément pour le rendre plus beau visuellement */
+/* Petite barre grise en bas des liens */
 .nav-item:before {
-  content: "";
-  position: absolute;
-  bottom: -6px;
-  background-color: #dfe2ea;
-  height: 5px;
-  width: 100%;
-  border-radius: 8px 8px 0 0;
-  left: 0;
-  transition: .3s;
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    background-color: #ddd4c4;
+    height: 5px;
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+    left: 0;
+    transition: 0.3s;
 }
 
-/* Avec les dernières nouveautés de CSS, on peut changer les propriétés des éléments selon des conditions avec not */
+/* Effet au survol du menu */
 .nav-item:not(.is-active):hover:before {
-  bottom: 0;
+    bottom: 0;
 }
+
 .nav-item:not(.is-active):hover {
-  color: #333;
+    color: var(--primary-dark);
 }
 
-/* Stylisons notre indicateur */
+/* La barre colorée qui suit l'élément actif du menu */
 .nav-indicator {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 5px;
-  transition: .4s;
-  border-radius: 8px 8px 0 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 5px;
+    transition: 0.4s;
+    border-radius: 8px 8px 0 0;
 }
 
+/* =========================================================
+   CONTENU GENERAL
+   ========================================================= */
+
+/* Titres et descriptions de pages */
+h1 {
+    margin: 35px 40px 5px;
+    font-size: 34px;
+}
+
+body > p {
+    margin: 0 40px 25px;
+    max-width: 850px;
+}
+
+/* =========================================================
+   CARTES DE STATISTIQUES
+   ========================================================= */
 
 .stats {
     display: flex;
@@ -64,26 +136,39 @@ nav {
     flex-wrap: wrap;
 }
 
+/* Carte utilisée sur la page d'accueil */
 .stat-card {
-    background-color: white;
+    background-color: var(--card);
     width: 180px;
     padding: 25px;
-    border-radius: 15px;
+    border-radius: 18px;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(47, 111, 78, 0.12);
+    border: 1px solid var(--border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Petit effet quand on passe la souris sur une carte */
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(47, 111, 78, 0.18);
 }
 
 .stat-card h2 {
     margin: 0;
     font-size: 36px;
-    color: #0066cc;
+    color: var(--primary);
 }
 
 .stat-card p {
     margin-top: 10px;
     font-size: 16px;
-    color: #4b5563;
+    color: var(--muted);
 }
+
+/* =========================================================
+   CARTES SPORTS
+   ========================================================= */
 
 .sports {
     display: flex;
@@ -93,26 +178,36 @@ nav {
 }
 
 .sport-card {
-    background-color: white;
-    width: 220px;
+    background-color: var(--card);
+    width: 240px;
     padding: 25px;
-    border-radius: 15px;
+    border-radius: 18px;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(47, 111, 78, 0.12);
+    border: 1px solid var(--border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sport-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(47, 111, 78, 0.18);
 }
 
 .sport-card h2 {
     margin: 0;
-    font-size: 36px;
-    color: #0066cc;
+    font-size: 26px;
+    color: var(--primary);
 }
 
 .sport-card p {
     margin-top: 10px;
-    font-size: 16px;
-    color: #4b5563;
+    font-size: 15px;
+    color: var(--muted);
 }
 
+/* =========================================================
+   CARTES CLUBS
+   ========================================================= */
 
 .clubs {
     display: flex;
@@ -121,44 +216,363 @@ nav {
     flex-wrap: wrap;
 }
 
+/* Carte de club */
 .club-card {
-    background-color: white;
-    width: 400px;
+    background-color: var(--card);
+    width: 360px;
+    min-height: 210px;
     padding: 25px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 18px;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(47, 111, 78, 0.12);
+    border: 1px solid var(--border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.club-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(47, 111, 78, 0.18);
 }
 
 .club-card h2 {
-    margin: 0;
-    font-size: 36px;
-    color: #0066cc;
+    margin: 0 0 15px;
+    font-size: 24px;
+    color: var(--primary-dark);
 }
 
 .club-card p {
-    margin-top: 10px;
-    font-size: 16px;
-    color: #4b5563;
+    margin: 8px 0;
+    font-size: 15px;
+    color: var(--muted);
 }
 
+/* Quand toute la carte est un lien */
+.club-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Texte pour indiquer qu'on peut cliquer */
+.voir-detail {
+    margin-top: 18px;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+/* =========================================================
+   FILTRE PAR COMMUNE
+   ========================================================= */
+
+.filter-form {
+    margin: 30px 40px;
+    padding: 20px;
+    background-color: var(--card);
+    border-radius: 18px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 12px rgba(47, 111, 78, 0.12);
+    border: 1px solid var(--border);
+}
+
+.filter-form label {
+    font-weight: bold;
+    color: var(--primary-dark);
+}
+
+.filter-form select {
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background-color: white;
+    color: var(--text);
+}
+
+.filter-form button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--primary);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.filter-form button:hover {
+    background-color: var(--primary-dark);
+}
+
+/* =========================================================
+   TABLEAUX
+   ========================================================= */
+
+table {
+    width: calc(100% - 80px);
+    margin: 35px 40px;
+    border-collapse: collapse;
+    background-color: var(--card);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(47, 111, 78, 0.12);
+    border: 1px solid var(--border);
+}
+
+/* En-tête du tableau */
+th {
+    background-color: var(--primary);
+    color: white;
+    padding: 14px;
+    text-align: left;
+    font-size: 15px;
+}
+
+/* Cellules du tableau */
+td {
+    padding: 13px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+}
+
+/* Une ligne sur deux légèrement différente */
+tr:nth-child(even) td {
+    background-color: #faf6ee;
+}
+
+/* Survol d'une ligne */
+tr:hover td {
+    background-color: #f1eadf;
+}
+
+/* =========================================================
+   FORMULAIRES
+   ========================================================= */
+
+form {
+    margin: 30px 40px;
+    padding: 25px;
+    background-color: var(--card);
+    border-radius: 18px;
+    box-shadow: 0 4px 12px rgba(47, 111, 78, 0.12);
+    border: 1px solid var(--border);
+    max-width: 600px;
+}
+
+/* Labels des formulaires */
+form label {
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: var(--primary-dark);
+}
+
+/* Champs de saisie */
+form input,
+form select {
+    width: 100%;
+    padding: 11px 13px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background-color: white;
+    color: var(--text);
+    font-size: 15px;
+}
+
+/* Effet quand on clique dans un champ */
+form input:focus,
+form select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(47, 111, 78, 0.15);
+}
+
+/* Boutons classiques */
+button,
+.btn-link {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 11px 18px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--primary);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Survol des boutons */
+button:hover,
+.btn-link:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   MESSAGES SUCCES / ERREUR
+   ========================================================= */
 
 .message-succes {
     margin: 20px 40px;
-    padding: 15px;
-    background-color: #dcfce7;
-    color: #166534;
+    padding: 16px;
+    background-color: var(--success-bg);
+    color: var(--success-text);
     border: 1px solid #bbf7d0;
-    border-radius: 10px;
+    border-radius: 14px;
     font-weight: bold;
 }
 
 .message-erreur {
     margin: 20px 40px;
-    padding: 15px;
-    background-color: #fee2e2;
-    color: #991b1b;
+    padding: 16px;
+    background-color: var(--danger-bg);
+    color: var(--danger-text);
     border: 1px solid #fecaca;
-    border-radius: 10px;
+    border-radius: 14px;
     font-weight: bold;
+}
+
+/* Les liens dans les messages */
+.message-succes a,
+.message-erreur a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+/* =========================================================
+   PAGE DETAIL CLUB
+   ========================================================= */
+
+.detail-club {
+    margin: 35px 40px;
+}
+
+/* Carte principale du détail d'un club */
+.detail-card {
+    background-color: var(--card);
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 4px 12px rgba(47, 111, 78, 0.12);
+    border: 1px solid var(--border);
+    max-width: 900px;
+}
+
+.detail-card h1 {
+    margin: 0 0 18px;
+    color: var(--primary-dark);
+}
+
+.detail-card p {
+    margin: 10px 0;
+}
+
+/* Lien retour vers clubs.php */
+.retour {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.retour:hover {
+    color: var(--primary-dark);
+}
+
+/* =========================================================
+   LISTES
+   ========================================================= */
+
+ul {
+    margin: 25px 40px;
+    padding: 22px 30px;
+    background-color: var(--card);
+    border-radius: 18px;
+    box-shadow: 0 4px 12px rgba(47, 111, 78, 0.12);
+    border: 1px solid var(--border);
+    max-width: 700px;
+}
+
+li {
+    margin: 8px 0;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+    margin-top: 60px;
+    padding: 25px 40px;
+    text-align: center;
+    background-color: #efe6d8;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+}
+
+.footer hr {
+    display: none;
+}
+
+.footer p {
+    margin: 5px 0;
+    color: var(--muted);
+}
+
+/* =========================================================
+   RESPONSIVE
+   Pour que le site reste lisible sur petit écran
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    nav {
+        width: calc(100% - 20px);
+        margin: 12px auto;
+        border-radius: 20px;
+    }
+
+    .nav-item {
+        padding: 14px 12px;
+        font-size: 14px;
+    }
+
+    h1 {
+        margin: 25px 20px 5px;
+        font-size: 28px;
+    }
+
+    body > p {
+        margin: 0 20px 20px;
+    }
+
+    .stats,
+    .sports,
+    .clubs,
+    .filter-form,
+    form,
+    .detail-club,
+    ul {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .stat-card,
+    .sport-card,
+    .club-card {
+        width: 100%;
+    }
+
+    table {
+        width: calc(100% - 40px);
+        margin: 25px 20px;
+        font-size: 14px;
+        display: block;
+        overflow-x: auto;
+    }
+
+    th,
+    td {
+        white-space: nowrap;
+    }
 }
