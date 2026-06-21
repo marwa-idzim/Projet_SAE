@@ -54,9 +54,13 @@ $nbLicencies = $stmt->fetchColumn();
         <span class="nav-indicator"></span>
     </nav>
 
-    <h1>Trouvez une activité sportive près de chez vous avec BoojToi !</h1>
-    <p>Consultez les clubs, équipements et séances sportives disponibles dans votre commune.</p>
-    
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Trouvez une activité sportive près de chez vous avec BoojToi !</h1>
+            <p>Consultez les clubs, équipements et séances sportives disponibles dans votre commune.</p>
+        </div>
+    </section>
+
     <section class="stats">
 
         <a href="communes.php" class="stat-link">

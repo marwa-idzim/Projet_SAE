@@ -576,3 +576,36 @@ li {
         white-space: nowrap;
     }
 }
+
+/* Bannière de la page d'accueil */
+.hero {
+    margin: 30px 40px;
+    padding: 70px 45px;
+    border-radius: 25px;
+
+    background-image: linear-gradient(
+        rgba(36, 49, 39, 0.45),
+        rgba(36, 49, 39, 0.45)
+    ), url("../images/image_sport.png");
+
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 6px 18px rgba(47, 111, 78, 0.18);
+}
+
+/* Texte dans la bannière */
+.hero-text {
+    max-width: 600px;
+}
+
+.hero h1 {
+    margin: 0 0 12px;
+    color: white;
+    font-size: 42px;
+}
+
+.hero p {
+    margin: 0;
+    color: #f7f3ea;
+    font-size: 18px;
+}
