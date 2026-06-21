@@ -3,6 +3,7 @@ require "../config/db.php";
 
 $acces = false;
 $erreur = "";
+$idSeance = $_GET["id_seance"] ?? null;
 
 // Vérifie si le formulaire a été envoyé
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -10,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $motdepasse = $_POST["motdepasse"];
 
     // mot de passe choisi
-    if ($motdepasse == "mercipourlestravaux") {
+    if ($motdepasse == "azul") {
 
         $acces = true;
 
@@ -66,7 +67,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php else: ?> 
     
     <?php
-    $sql = "SELECT 
+    if ($idSeance === null) {
+        $sql = "SELECT 
             lic.nom,
             lic.prenom,
 
@@ -89,9 +91,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         LEFT JOIN Clubs c
             ON s.id_club = c.id_club
 
-        ORDER BY i.date_inscription DESC";
+        ORDER BY lic.nom, lic.prenom DESC";
 
     $stmt = $pdo->query($sql);
+    }
+    else {
+    $sql = "SELECT 
+                i.id_inscription,
+                l.nom,
+                l.prenom,
+                l.email,
+                i.date_inscription,
+                s.date_seance,
+                s.heure_debut,
+                s.heure_fin,
+                cl.nom AS club,
+                sp.nom AS sport
+            FROM Inscriptions i
+            JOIN Licencies l ON i.id_licencies = l.id_licencies
+            JOIN Seances s ON i.id_seance = s.id_seance
+            JOIN Clubs cl ON s.id_club = cl.id_club
+            JOIN Sports sp ON cl.id_sport = sp.id_sport
+            WHERE s.id_seance = :id_seance
+            ORDER BY lic.nom, lic.prenom DESC";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        "id_seance" => $idSeance
+    ]);
+}
     $inscriptions = $stmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
 
