@@ -43,7 +43,7 @@ $communes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <h1>Titre</h1>
     <p>Description</p>
     
-    <table >
+    <table border="1">
         <tr >
             <th> Nom de la commune </th>
             <th> Département </th>
