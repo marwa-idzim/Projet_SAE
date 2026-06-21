@@ -3,7 +3,7 @@ require "../config/db.php";
 
 $sql = "SELECT 
             co.nom,
-            co.departement,
+            co.CodePostal,
             COUNT(DISTINCT cl.id_club) AS nb_clubs,
             COUNT(DISTINCT e.id_equipement) AS nb_equipements
         FROM Communes co
@@ -45,14 +45,14 @@ $communes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <table border="1">
         <tr >
             <th> Nom de la commune </th>
-            <th> Département </th>
+            <th> Code Postal </th>
             <th> Nombre de Clubs </th>
             <th> Nombre d'équipements </th>
         </tr>
         <?php foreach($communes as $commune):?>
         <tr>
             <td> <?= htmlspecialchars($commune['nom']) ?> </td>
-            <td> <?= htmlspecialchars($commune['departement']) ?> </td>
+            <td> <?= htmlspecialchars($commune['CodePostal']) ?> </td>
             <td> <?= htmlspecialchars($commune['nb_clubs']) ?> </td>
             <td> <?= htmlspecialchars($commune['nb_equipements']) ?> </td>
         </tr>
