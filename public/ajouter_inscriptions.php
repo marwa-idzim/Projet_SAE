@@ -147,7 +147,8 @@ $messageErreur = "";
             $deja_inscrit = $stmt->fetchColumn();
 
             if((int)$deja_inscrit===0){
-                $messageSucces="Votre inscription à la séance a bien été prise en compte.";
+                $messageSucces="Votre inscription à la séance a bien été prise en compte. 
+                    Mot de passe pour voir les inscriptions de cette séance : sport2026";
 
                 $date_inscription=date("Y-m-d");
                 $sql = "SELECT MAX(id_inscription) FROM Inscriptions";
@@ -180,6 +181,10 @@ $messageErreur = "";
     <?php if (!empty($messageSucces)): ?>
         <div class="message-succes">
             <?= htmlspecialchars($messageSucces) ?>
+            <br>
+            <a href="inscriptions.php?id_seance=<?= htmlspecialchars($info_seance['id_seance']) ?>">
+                Voir les inscriptions de cette séance
+            </a>
         </div>
     <?php endif; ?>
 
