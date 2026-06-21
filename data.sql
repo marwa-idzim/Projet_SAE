@@ -240,9 +240,9 @@ INSERT IGNORE INTO Licencies VALUES
 (313, 'Chevalier', 'Noa', 'noa.chevalier@mail.fr'),
 (314, 'Francois', 'Ines', 'ines.francois@mail.fr'),
 (315, 'Elhosary', 'Ramy', 'ramy.elh@mail.fr'),
-(315, 'Idzim', 'Marwa', 'mrw.idz@mail.fr'),
-(315, 'Andrianandrainy', 'Jim', 'jim.shan@mail.fr'),
-(315, 'Mbappe', 'Kyky', 'kyky.mbappe@mail.fr');
+(316, 'Idzim', 'Marwa', 'mrw.idz@mail.fr'),
+(317, 'Andrianandrainy', 'Jim', 'jim.shan@mail.fr'),
+(318, 'Mbappe', 'Kyky', 'kyky.mbappe@mail.fr');
 
 
 -- SEANCES
