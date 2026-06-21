@@ -50,12 +50,12 @@ $nbLicencies = $stmt->fetchColumn();
         <a href="equipements.php" class="nav-item" data-active-color="#0022cc" data-target="Equipements">Équipements</a>
         <a href="seances.php" class="nav-item" data-active-color="#c200cc" data-target="Seances">Séances</a>
         <a href="inscriptions.php" class="nav-item" data-active-color="#cc007e" data-target="Inscriptions">Inscriptions</a>
-
+        <a href="index.php" class="site-name">BoojToi</a>
         <span class="nav-indicator"></span>
     </nav>
 
     <section class="hero">
-        <img src="/projet_SAE/images/image_sport.png" alt="Activités sportives" class="hero-img">
+        <img src="../images/image_sport.png" alt="Activités sportives" class="hero-img">
         <div class="hero-text">
             <h1>Trouvez une activité sportive près de chez vous avec BoujToi !</h1>
             <p>Consultez les clubs, équipements et séances sportives disponibles dans votre commune.</p>

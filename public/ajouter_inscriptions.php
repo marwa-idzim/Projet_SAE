@@ -51,7 +51,7 @@ $messageErreur = "";
         <a href="equipements.php" class="nav-item" data-active-color="#0022cc" data-target="Equipements">Équipements</a>
         <a href="seances.php" class="nav-item" data-active-color="#c200cc" data-target="Seances">Séances</a>
         <a href="inscriptions.php" class="nav-item is-active" data-active-color="#cc007e" data-target="Inscriptions">Inscriptions</a>
-
+        <a href="index.php" class="site-name">BoojToi</a>
         <span class="nav-indicator"></span>
     </nav>
 
