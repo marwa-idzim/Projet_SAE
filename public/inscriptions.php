@@ -98,9 +98,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else {
     $sql = "SELECT 
                 i.id_inscription,
-                l.nom,
-                l.prenom,
-                l.email,
+                lic.nom,
+                lic.prenom,
+                lic.email,
                 i.date_inscription,
                 s.date_seance,
                 s.heure_debut,
@@ -108,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 cl.nom AS club,
                 sp.nom AS sport
             FROM Inscriptions i
-            JOIN Licencies l ON i.id_licencies = l.id_licencies
+            JOIN Licencies lic ON i.id_licencies = lic.id_licencies
             JOIN Seances s ON i.id_seance = s.id_seance
             JOIN Clubs cl ON s.id_club = cl.id_club
             JOIN Sports sp ON cl.id_sport = sp.id_sport
