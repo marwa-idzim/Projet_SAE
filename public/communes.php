@@ -39,8 +39,8 @@ $communes = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <span class="nav-indicator"></span>
     </nav>
 
-    <h1>Titre</h1>
-    <p>Description</p>
+    <h1>Communes Partenaires de BoojToi</h1>
+    <p>Assurez vous que votre commune est sportive et partenaire avec notre association en la cherchant dans le tableau !</p>
     
     <table border="1">
         <tr >

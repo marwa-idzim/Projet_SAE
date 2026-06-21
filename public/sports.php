@@ -37,9 +37,10 @@ $sports = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </nav>
 
 
-    <h1>Titre</h1>
-    <p>Description</p>
-    
+    <h1>Sports disponibles avec BoojToi !</h1>
+    <p>Tous les sports auquels vous avez accès avec nous !</p>
+    <p>Essaie-les tous et deviens un futur espoir français !</p>
+
     <section class="sports">
         <?php foreach($sports as $sport):?>
         <div class="sport-card">

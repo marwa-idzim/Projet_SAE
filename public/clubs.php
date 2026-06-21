@@ -72,11 +72,11 @@ $clubs = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <span class="nav-indicator"></span>
     </nav>
 
-    <h1>Titre</h1>
-    <p>Description</p>
+    <h1>Tous les clubs partenaires</h1>
+    <p>Cherche le club le plus proche de chez toi en filtrant par commune.</p>
 
     <form method="get" class="filter-form">
-    <label for="id_commune">Filtrer par commune :</label>
+    <label for="id_commune"> Cherche ta ville ici :</label>
 
     <select name="id_commune" id="id_commune">
         <option value="">Toutes les communes</option>
@@ -89,7 +89,7 @@ $clubs = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
     </select>
 
-    <button type="submit">Filtrer</button>
+    <button type="submit">Chercher</button>
 </form>
     
     <section class="clubs">
