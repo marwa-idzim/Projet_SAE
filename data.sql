@@ -1,11 +1,7 @@
 USE association_sportive;
 
--- Création de données de notre site web
-
 -- COMMUNES
--- id_commune, nom, CodePostal, Departement, Region
-
-INSERT IGNORE INTO Communes VALUES
+INSERT INTO Communes VALUES
 (1001, 'Paris', 75000, 75, 'Ile-de-France'),
 (1002, 'Lyon', 69000, 69, 'Auvergne-Rhone-Alpes'),
 (1003, 'Marseille', 13000, 13, 'Provence-Alpes-Cote dAzur'),
@@ -18,7 +14,7 @@ INSERT IGNORE INTO Communes VALUES
 (1010, 'Strasbourg', 67000, 67, 'Grand Est'),
 (1011, 'Nanterre', 92000, 92, 'Ile-de-France'),
 (1012, 'Creteil', 94000, 94, 'Ile-de-France'),
-(1013, 'Cergy', 95000, 95, 'Ile-de-France'), 
+(1013, 'Cergy', 95000, 95, 'Ile-de-France'),
 (1014, 'Argenteuil', 95100, 95, 'Ile-de-France'),
 (1015, 'Aubervilliers', 93300, 93, 'Ile-de-France'),
 (1016, 'Toulouse', 31000, 31, 'Occitanie'),
@@ -36,9 +32,7 @@ INSERT IGNORE INTO Communes VALUES
 (1028, 'Besancon', 25000, 25, 'Bourgogne-Franche-Comte');
 
 -- SPORTS
--- id_sport, nom, Federation
-
-INSERT IGNORE INTO Sports VALUES
+INSERT INTO Sports VALUES
 (1, 'Football', 'FFF'),
 (2, 'Basketball', 'FFBB'),
 (3, 'Tennis', 'FFT'),
@@ -55,7 +49,7 @@ INSERT IGNORE INTO Sports VALUES
 (14, 'Gymnastique', 'FFGym'),
 (15, 'Tennis de table', 'FFTT'),
 (16, 'Danse', 'FFD'),
-(17, 'Karaté', 'FFK'),
+(17, 'Karate', 'FFK'),
 (18, 'Aviron', 'FFAviron'),
 (19, 'Triathlon', 'FFTRI'),
 (20, 'Escrime', 'FFE'),
@@ -65,59 +59,53 @@ INSERT IGNORE INTO Sports VALUES
 (24, 'Golf', 'FFGolf'),
 (25, 'Equitation', 'FFEquestre');
 
+-- CLUBS : plus de nb_licencies ici, on le calcule avec les inscriptions
+INSERT INTO Clubs VALUES
+(101, 'Paris Football Club', 1001, 1),
+(102, 'Lyon Basket Academy', 1002, 2),
+(103, 'Marseille Tennis Club', 1003, 3),
+(104, 'Lille Natation', 1004, 4),
+(105, 'Bordeaux Rugby Club', 1005, 5),
+(106, 'AS Sarcelles Natation', 1006, 4),
+(107, 'Saint-Denis Handball', 1007, 6),
+(108, 'Montreuil Volley Club', 1008, 7),
+(109, 'Nice Athletisme', 1009, 8),
+(110, 'Strasbourg Judo Academy', 1010, 9),
+(111, 'Nanterre Handball Club', 1011, 6),
+(112, 'Creteil Judo Academie', 1012, 9),
+(113, 'Cergy Tennis Club', 1013, 3),
+(114, 'Argenteuil Badminton Club', 1014, 11),
+(115, 'Aubervilliers Boxe Club', 1015, 12),
+(116, 'Toulouse Escalade Passion', 1016, 13),
+(117, 'Nantes Gymnastique', 1017, 14),
+(118, 'Rennes Tennis de Table', 1018, 15),
+(119, 'Cergy Football Jeunes', 1013, 1),
+(120, 'Argenteuil Basket Association', 1014, 2),
+(121, 'Aubervilliers Athletisme', 1015, 8),
+(122, 'Rennes Natation Club', 1018, 4),
+(123, 'Grenoble Danse Club', 1019, 16),
+(124, 'Grenoble Karate Dojo', 1019, 17),
+(125, 'Montpellier Aviron Club', 1020, 18),
+(126, 'Montpellier Triathlon', 1020, 19),
+(127, 'Reims Escrime Club', 1021, 20),
+(128, 'Reims Hockey Association', 1021, 21),
+(129, 'Dijon Roller Club', 1022, 22),
+(130, 'Dijon Tir a l Arc', 1022, 23),
+(131, 'Tours Golf Academy', 1023, 24),
+(132, 'Tours Equitation Club', 1023, 25),
+(133, 'Rouen Football Formation', 1024, 1),
+(134, 'Rouen Basket Club', 1024, 2),
+(135, 'Caen Tennis Club', 1025, 3),
+(136, 'Caen Natation', 1025, 4),
+(137, 'Angers Rugby Club', 1026, 5),
+(138, 'Angers Handball Association', 1026, 6),
+(139, 'Metz Volley Club', 1027, 7),
+(140, 'Metz Athletisme', 1027, 8),
+(141, 'Besancon Judo Club', 1028, 9),
+(142, 'Besancon Cyclisme', 1028, 10);
 
--- CLUBS
--- id_club, nom, nb_licencies, id_commune, id_sport
-
-INSERT IGNORE INTO Clubs VALUES
-(101, 'Paris Football Club', 350, 1001, 1),
-(102, 'Lyon Basket Academy', 180, 1002, 2),
-(103, 'Marseille Tennis Club', 120, 1003, 3),
-(104, 'Lille Natation', 95, 1004, 4),
-(105, 'Bordeaux Rugby Club', 220, 1005, 5),
-(106, 'AS Sarcelles Natation', 160, 1006, 4),
-(107, 'Saint-Denis Handball', 210, 1007, 6),
-(108, 'Montreuil Volley Club', 140, 1008, 7),
-(109, 'Nice Athletisme', 175, 1009, 8),
-(110, 'Strasbourg Judo Academy', 130, 1010, 9),
-(111, 'Nanterre Handball Club', 190, 1011, 6),
-(112, 'Creteil Judo Academie', 150, 1012, 9),
-(113, 'Cergy Tennis Club', 125, 1013, 3),
-(114, 'Argenteuil Badminton Club', 95, 1014, 11),
-(115, 'Aubervilliers Boxe Club', 110, 1015, 12),
-(116, 'Toulouse Escalade Passion', 85, 1016, 13),
-(117, 'Nantes Gymnastique', 135, 1017, 14),
-(118, 'Rennes Tennis de Table', 75, 1018, 15),
-(119, 'Cergy Football Jeunes', 210, 1013, 1),
-(120, 'Argenteuil Basket Association', 160, 1014, 2),
-(121, 'Aubervilliers Athletisme', 145, 1015, 8),
-(122, 'Rennes Natation Club', 130, 1018, 4),
-(123, 'Grenoble Danse Club', 95, 1019, 16),
-(124, 'Grenoble Karaté Dojo', 120, 1019, 17),
-(125, 'Montpellier Aviron Club', 80, 1020, 18),
-(126, 'Montpellier Triathlon', 140, 1020, 19),
-(127, 'Reims Escrime Club', 75, 1021, 20),
-(128, 'Reims Hockey Association', 100, 1021, 21),
-(129, 'Dijon Roller Club', 90, 1022, 22),
-(130, 'Dijon Tir a l Arc', 65, 1022, 23),
-(131, 'Tours Golf Academy', 115, 1023, 24),
-(132, 'Tours Equitation Club', 130, 1023, 25),
-(133, 'Rouen Football Formation', 210, 1024, 1),
-(134, 'Rouen Basket Club', 165, 1024, 2),
-(135, 'Caen Tennis Club', 125, 1025, 3),
-(136, 'Caen Natation', 150, 1025, 4),
-(137, 'Angers Rugby Club', 175, 1026, 5),
-(138, 'Angers Handball Association', 145, 1026, 6),
-(139, 'Metz Volley Club', 110, 1027, 7),
-(140, 'Metz Athletisme', 135, 1027, 8),
-(141, 'Besancon Judo Club', 100, 1028, 9),
-(142, 'Besancon Cyclisme', 85, 1028, 10);
-
-
--- DETAILS CLUB
--- id_detail, adresse, site_web, email, num_tel, desc_club, id_club
-
-INSERT IGNORE INTO Details_Club VALUES
+-- DETAILS_CLUB
+INSERT INTO Details_Club VALUES
 (1, '12 rue Victor Hugo', 'www.parisfc.fr', 'contact@parisfc.fr', '0102030405', 'Club de football parisien', 101),
 (2, '8 avenue des Sports', 'www.lyonbasket.fr', 'contact@lyonbasket.fr', '0203040506', 'Club de basketball de Lyon', 102),
 (3, '25 boulevard Central', 'www.marseilletennis.fr', 'contact@marseilletennis.fr', '0304050607', 'Club de tennis marseillais', 103),
@@ -161,11 +149,8 @@ INSERT IGNORE INTO Details_Club VALUES
 (41, '24 rue du Tatami', 'www.besanconjudo.fr', 'contact@besanconjudo.fr', '0670000019', 'Club de judo de Besancon.', 141),
 (42, '13 route du Velo', 'www.besanconcyclisme.fr', 'contact@besanconcyclisme.fr', '0670000020', 'Club de cyclisme avec sorties encadrees.', 142);
 
-
 -- EQUIPEMENTS
--- id_equipement, nom, type_equip, adresse, id_commune
-
-INSERT IGNORE INTO Equipements VALUES
+INSERT INTO Equipements VALUES
 (201, 'Stade Municipal Paris', 'Stade', '10 rue du Stade', 1001),
 (202, 'Gymnase Lyon Centre', 'Gymnase', '22 avenue des Sports', 1002),
 (203, 'Terrain Tennis Marseille', 'Terrain Tennis', '5 rue du Tennis', 1003),
@@ -218,11 +203,8 @@ INSERT IGNORE INTO Equipements VALUES
 (250, 'Dojo Besancon', 'Dojo', '24 rue du Tatami', 1028),
 (251, 'Circuit Cyclisme Besancon', 'Circuit velo', '13 route du Velo', 1028);
 
-
--- LICENCIES
--- id_licencies, nom, prenom, email
-
-INSERT IGNORE INTO Licencies VALUES
+-- LICENCIES : pas de id_club ici, un licencié peut aller à plusieurs clubs via ses inscriptions
+INSERT INTO Licencies VALUES
 (301, 'Dupont', 'Alice', 'alice.dupont@mail.fr'),
 (302, 'Martin', 'Lucas', 'lucas.martin@mail.fr'),
 (303, 'Bernard', 'Emma', 'emma.bernard@mail.fr'),
@@ -274,12 +256,8 @@ INSERT IGNORE INTO Licencies VALUES
 (349, 'Dumont', 'Assia', 'assia.dumont@mail.fr'),
 (350, 'Fontaine', 'Eden', 'eden.fontaine@mail.fr');
 
-
-
 -- SEANCES
--- id_seance, date_seance, heure_debut, heure_fin, niveau, id_club, id_equipement
-
-INSERT IGNORE INTO Seances VALUES
+INSERT INTO Seances VALUES
 (401, '2026-01-10', '18:00:00', '20:00:00', 'Seniors', 101, 201),
 (402, '2026-01-11', '17:00:00', '19:00:00', 'Debutants', 102, 202),
 (403, '2026-01-12', '16:00:00', '18:00:00', 'Intermediaire', 103, 203),
@@ -327,69 +305,65 @@ INSERT IGNORE INTO Seances VALUES
 (445, '2026-02-24', '17:00:00', '19:00:00', 'Intermediaire', 141, 250),
 (446, '2026-02-25', '09:30:00', '11:30:00', 'Seniors', 142, 251);
 
-
-
--- INSCRIPTIONS
--- id_inscription, nom, prenom, email, date_inscription, id_seance
-
-INSERT IGNORE INTO Inscriptions VALUES
-(501, 'Dupont', 'Alice', 'alice.dupont@mail.fr', '2025-09-01', 401),
-(502, 'Martin', 'Lucas', 'lucas.martin@mail.fr', '2025-09-02', 402),
-(503, 'Bernard', 'Emma', 'emma.bernard@mail.fr', '2025-09-03', 403),
-(504, 'Petit', 'Tom', 'tom.petit@mail.fr', '2025-09-04', 404),
-(505, 'Garcia', 'Lina', 'lina.garcia@mail.fr', '2025-09-05', 405),
-(506, 'Moreau', 'Julie', 'julie.moreau@mail.fr', '2025-09-06', 406),
-(507, 'Lefevre', 'Nathan', 'nathan.lefevre@mail.fr', '2025-09-07', 407),
-(508, 'Roux', 'Sarah', 'sarah.roux@mail.fr', '2025-09-08', 408),
-(509, 'Faure', 'Enzo', 'enzo.faure@mail.fr', '2025-09-09', 409),
-(510, 'Mercier', 'Camille', 'camille.mercier@mail.fr', '2025-09-10', 410),
-(511, 'Durand', 'Camille', 'camille.durand@mail.fr', '2026-01-11', 411),
-(512, 'Leroy', 'Nathan', 'nathan.leroy@mail.fr', '2026-01-11', 411),
-(513, 'Morel', 'Sarah', 'sarah.morel@mail.fr', '2026-01-12', 412),
-(514, 'Garnier', 'Adam', 'adam.garnier@mail.fr', '2026-01-13', 413),
-(515, 'Andre', 'Hugo', 'hugo.andre@mail.fr', '2026-01-14', 414),
-(516, 'Renaud', 'Emma', 'emma.renaud@mail.fr', '2026-01-15', 415),
-(517, 'Colin', 'Ethan', 'ethan.colin@mail.fr', '2026-01-16', 416),
-(518, 'Henry', 'Lea', 'lea.henry@mail.fr', '2026-01-17', 417),
-(519, 'Masson', 'Ilyes', 'ilyes.masson@mail.fr', '2026-01-18', 418),
-(520, 'Marchand', 'Maya', 'maya.marchand@mail.fr', '2026-01-19', 419),
-(521, 'Duval', 'Amine', 'amine.duval@mail.fr', '2026-01-20', 420),
-(522, 'Giraud', 'Lena', 'lena.giraud@mail.fr', '2026-01-21', 421),
-(523, 'Dupont', 'Alice', 'alice.dupont@mail.fr', '2026-01-22', 422),
-(524, 'Martin', 'Lucas', 'lucas.martin@mail.fr', '2026-01-23', 423),
-(525, 'Bernard', 'Emma', 'emma.bernard@mail.fr', '2026-01-24', 424),
-(526, 'Petit', 'Tom', 'tom.petit@mail.fr', '2026-01-25', 425),
-(527, 'Garcia', 'Lina', 'lina.garcia@mail.fr', '2026-01-26', 426),
-(528, 'Moreau', 'Julie', 'julie.moreau@mail.fr', '2026-01-27', 411),
-(529, 'Lefevre', 'Nathan', 'nathan.lefevre@mail.fr', '2026-01-28', 412),
-(530, 'Roux', 'Sarah', 'sarah.roux@mail.fr', '2026-01-29', 413),
-(531, 'Lopez', 'Sami', 'sami.lopez@mail.fr', '2026-02-01', 427),
-(532, 'Perrin', 'Alice', 'alice.perrin@mail.fr', '2026-02-01', 427),
-(533, 'Robin', 'Rayan', 'rayan.robin@mail.fr', '2026-02-02', 428),
-(534, 'Clement', 'Mila', 'mila.clement@mail.fr', '2026-02-03', 429),
-(535, 'Morin', 'Nael', 'nael.morin@mail.fr', '2026-02-04', 430),
-(536, 'Gauthier', 'Jade', 'jade.gauthier@mail.fr', '2026-02-05', 431),
-(537, 'Barbier', 'Nina', 'nina.barbier@mail.fr', '2026-02-06', 432),
-(538, 'Arnaud', 'Elias', 'elias.arnaud@mail.fr', '2026-02-07', 433),
-(539, 'Noel', 'Yasmine', 'yasmine.noel@mail.fr', '2026-02-08', 434),
-(540, 'Meunier', 'Ibrahim', 'ibrahim.meunier@mail.fr', '2026-02-09', 435),
-(541, 'Boyer', 'Clara', 'clara.boyer@mail.fr', '2026-02-10', 436),
-(542, 'Caron', 'Sofiane', 'sofiane.caron@mail.fr', '2026-02-11', 437),
-(543, 'Aubert', 'Nadia', 'nadia.aubert@mail.fr', '2026-02-12', 438),
-(544, 'Leclerc', 'Kamel', 'kamel.leclerc@mail.fr', '2026-02-13', 439),
-(545, 'Pires', 'Eva', 'eva.pires@mail.fr', '2026-02-14', 440),
-(546, 'Renard', 'Mathis', 'mathis.renard@mail.fr', '2026-02-15', 441),
-(547, 'Riviere', 'Lina', 'lina.riviere@mail.fr', '2026-02-16', 442),
-(548, 'Meyer', 'Noam', 'noam.meyer@mail.fr', '2026-02-17', 443),
-(549, 'Dumont', 'Assia', 'assia.dumont@mail.fr', '2026-02-18', 444),
-(550, 'Fontaine', 'Eden', 'eden.fontaine@mail.fr', '2026-02-19', 445),
-(551, 'Lopez', 'Sami', 'sami.lopez@mail.fr', '2026-02-20', 446),
-(552, 'Perrin', 'Alice', 'alice.perrin@mail.fr', '2026-02-21', 428),
-(553, 'Robin', 'Rayan', 'rayan.robin@mail.fr', '2026-02-22', 430),
-(554, 'Clement', 'Mila', 'mila.clement@mail.fr', '2026-02-23', 432),
-(555, 'Morin', 'Nael', 'nael.morin@mail.fr', '2026-02-24', 434),
-(556, 'Gauthier', 'Jade', 'jade.gauthier@mail.fr', '2026-02-25', 436),
-(557, 'Barbier', 'Nina', 'nina.barbier@mail.fr', '2026-02-26', 438),
-(558, 'Arnaud', 'Elias', 'elias.arnaud@mail.fr', '2026-02-27', 440),
-(559, 'Noel', 'Yasmine', 'yasmine.noel@mail.fr', '2026-02-28', 442),
-(560, 'Meunier', 'Ibrahim', 'ibrahim.meunier@mail.fr', '2026-03-01', 444);
+-- INSCRIPTIONS : maintenant on met id_licencies et id_seance, pas nom/prenom/email
+INSERT INTO Inscriptions VALUES
+(501, '2025-09-01', 301, 401),
+(502, '2025-09-02', 302, 402),
+(503, '2025-09-03', 303, 403),
+(504, '2025-09-04', 304, 404),
+(505, '2025-09-05', 305, 405),
+(506, '2025-09-06', 306, 406),
+(507, '2025-09-07', 307, 407),
+(508, '2025-09-08', 308, 408),
+(509, '2025-09-09', 309, 409),
+(510, '2025-09-10', 310, 410),
+(511, '2026-01-11', 319, 411),
+(512, '2026-01-11', 320, 411),
+(513, '2026-01-12', 321, 412),
+(514, '2026-01-13', 322, 413),
+(515, '2026-01-14', 323, 414),
+(516, '2026-01-15', 324, 415),
+(517, '2026-01-16', 325, 416),
+(518, '2026-01-17', 326, 417),
+(519, '2026-01-18', 327, 418),
+(520, '2026-01-19', 328, 419),
+(521, '2026-01-20', 329, 420),
+(522, '2026-01-21', 330, 421),
+(523, '2026-01-22', 301, 422),
+(524, '2026-01-23', 302, 423),
+(525, '2026-01-24', 303, 424),
+(526, '2026-01-25', 304, 425),
+(527, '2026-01-26', 305, 426),
+(528, '2026-01-27', 306, 411),
+(529, '2026-01-28', 307, 412),
+(530, '2026-01-29', 308, 413),
+(531, '2026-02-01', 331, 427),
+(532, '2026-02-01', 332, 427),
+(533, '2026-02-02', 333, 428),
+(534, '2026-02-03', 334, 429),
+(535, '2026-02-04', 335, 430),
+(536, '2026-02-05', 336, 431),
+(537, '2026-02-06', 337, 432),
+(538, '2026-02-07', 338, 433),
+(539, '2026-02-08', 339, 434),
+(540, '2026-02-09', 340, 435),
+(541, '2026-02-10', 341, 436),
+(542, '2026-02-11', 342, 437),
+(543, '2026-02-12', 343, 438),
+(544, '2026-02-13', 344, 439),
+(545, '2026-02-14', 345, 440),
+(546, '2026-02-15', 346, 441),
+(547, '2026-02-16', 347, 442),
+(548, '2026-02-17', 348, 443),
+(549, '2026-02-18', 349, 444),
+(550, '2026-02-19', 350, 445),
+(551, '2026-02-20', 331, 446),
+(552, '2026-02-21', 332, 428),
+(553, '2026-02-22', 333, 430),
+(554, '2026-02-23', 334, 432),
+(555, '2026-02-24', 335, 434),
+(556, '2026-02-25', 336, 436),
+(557, '2026-02-26', 337, 438),
+(558, '2026-02-27', 338, 440),
+(559, '2026-02-28', 339, 442),
+(560, '2026-03-01', 340, 444);

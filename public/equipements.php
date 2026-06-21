@@ -1,6 +1,6 @@
 <?php
 require "../config/db.php";
-echo "Connexion réussie";
+
 $sql = "SELECT 
             equip.nom AS nom_equipement,
             equip.type_equip,

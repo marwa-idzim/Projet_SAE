@@ -1,6 +1,5 @@
 <?php
 require "../config/db.php";
-echo "Connexion réussie";
 
 $sql = "SELECT 
             co.nom,

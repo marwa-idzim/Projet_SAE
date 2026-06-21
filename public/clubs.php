@@ -1,13 +1,19 @@
 <?php
 require "../config/db.php";
 
-$sql = "SELECT  cl.nom AS nom, 
-                cl.nb_licencies AS nb_licencies, 
-                co.nom AS commune, 
-                s.nom AS sport 
-        FROM Clubs cl, Communes co, Sports s
-        WHERE cl.id_commune=co.id_commune
-        AND cl.id_sport=s.id_sport
+$sql = "SELECT 
+            cl.id_club,
+            cl.nom,
+            co.nom AS commune,
+            sp.nom AS sport,
+            COUNT(DISTINCT i.id_licencies) AS nb_licencies
+        FROM Clubs cl
+        JOIN Communes co ON cl.id_commune = co.id_commune
+        JOIN Sports sp ON cl.id_sport = sp.id_sport
+        LEFT JOIN Seances s ON cl.id_club = s.id_club
+        LEFT JOIN Inscriptions i ON s.id_seance = i.id_seance
+        GROUP BY cl.id_club, cl.nom, co.nom, sp.nom
+        ORDER BY cl.nom
         ";
 $stmt = $pdo->query($sql);
 $clubs = $stmt->fetchAll(PDO::FETCH_ASSOC);

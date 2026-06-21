@@ -27,6 +27,10 @@ $sql = "SELECT COUNT(*) FROM Inscriptions";
 $stmt = $pdo->query($sql);
 $nbInscriptions = $stmt->fetchColumn();
 
+$sql = "SELECT COUNT(*) FROM Licencies";
+$stmt = $pdo->query($sql);
+$nbLicencies = $stmt->fetchColumn();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -82,6 +86,11 @@ $nbInscriptions = $stmt->fetchColumn();
         <div class="stat-card">
             <h2><?php echo $nbInscriptions; ?></h2>
             <p>Inscriptions</p>
+        </div>
+
+        <div class="stat-card">
+            <h2><?php echo $nbLicencies; ?></h2>
+            <p>Licenciés</p>
         </div>
     </section>
 
