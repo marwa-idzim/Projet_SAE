@@ -57,7 +57,8 @@ INSERT IGNORE INTO Sports VALUES
 (22, 'Roller', 'FFRS'),
 (23, 'Tir a l arc', 'FFTA'),
 (24, 'Golf', 'FFGolf'),
-(25, 'Equitation', 'FFEquestre');
+(25, 'Equitation', 'FFEquestre'),
+(26, 'Echecs', 'Federation Francaise des Echecs');
 
 -- CLUBS : plus de nb_licencies ici, on le calcule avec les inscriptions
 INSERT IGNORE INTO Clubs VALUES
@@ -102,7 +103,8 @@ INSERT IGNORE INTO Clubs VALUES
 (139, 'Metz Volley Club', 1027, 7),
 (140, 'Metz Athletisme', 1027, 8),
 (141, 'Besancon Judo Club', 1028, 9),
-(142, 'Besancon Cyclisme', 1028, 10);
+(142, 'Besancon Cyclisme', 1028, 10),
+(143, 'Club d Echecs de Paris', 1001, 26);
 
 -- DETAILS_CLUB
 INSERT IGNORE INTO Details_Club VALUES
@@ -147,7 +149,9 @@ INSERT IGNORE INTO Details_Club VALUES
 (39, '7 rue du Filet', 'www.metzvolley.fr', 'contact@metzvolley.fr', '0670000017', 'Club de volleyball loisir et competition.', 139),
 (40, '19 avenue de la Piste', 'www.metzathle.fr', 'contact@metzathle.fr', '0670000018', 'Club d athletisme avec entrainements hebdomadaires.', 140),
 (41, '24 rue du Tatami', 'www.besanconjudo.fr', 'contact@besanconjudo.fr', '0670000019', 'Club de judo de Besancon.', 141),
-(42, '13 route du Velo', 'www.besanconcyclisme.fr', 'contact@besanconcyclisme.fr', '0670000020', 'Club de cyclisme avec sorties encadrees.', 142);
+(42, '13 route du Velo', 'www.besanconcyclisme.fr', 'contact@besanconcyclisme.fr', '0670000020', 'Club de cyclisme avec sorties encadrees.', 142),
+(43, '12 rue des Rois', 'www.echecs-paris.fr', 'contact@echecs-paris.fr', '0671000000','Club d echecs ouvert aux debutants et aux joueurs confirmes.', 143);
+
 
 -- EQUIPEMENTS
 INSERT IGNORE INTO Equipements VALUES
@@ -201,7 +205,8 @@ INSERT IGNORE INTO Equipements VALUES
 (248, 'Salle Volley Metz', 'Salle Sportive', '7 rue du Filet', 1027),
 (249, 'Piste Athletisme Metz', 'Piste', '19 avenue de la Piste', 1027),
 (250, 'Dojo Besancon', 'Dojo', '24 rue du Tatami', 1028),
-(251, 'Circuit Cyclisme Besancon', 'Circuit velo', '13 route du Velo', 1028);
+(251, 'Circuit Cyclisme Besancon', 'Circuit velo', '13 route du Velo', 1028),
+(252, 'Salle municipale des echecs', 'Salle polyvalente', '12 rue des Rois', 1001);
 
 -- LICENCIES : pas de id_club ici, un licencié peut aller à plusieurs clubs via ses inscriptions
 INSERT IGNORE INTO Licencies VALUES
@@ -254,7 +259,12 @@ INSERT IGNORE INTO Licencies VALUES
 (347, 'Riviere', 'Lina', 'lina.riviere@mail.fr'),
 (348, 'Meyer', 'Noam', 'noam.meyer@mail.fr'),
 (349, 'Dumont', 'Assia', 'assia.dumont@mail.fr'),
-(350, 'Fontaine', 'Eden', 'eden.fontaine@mail.fr');
+(350, 'Fontaine', 'Eden', 'eden.fontaine@mail.fr'),
+(351, 'Martin', 'Lucas', 'lucas.martin@example.com'),
+(352, 'Bernard', 'Emma', 'emma.bernard@example.com'),
+(353, 'Petit', 'Noah', 'noah.petit@example.com'),
+(354, 'Durand', 'Lea', 'lea.durand@example.com'),
+(355, 'Moreau', 'Adam', 'adam.moreau@example.com');
 
 -- SEANCES
 INSERT IGNORE INTO Seances VALUES
@@ -303,7 +313,12 @@ INSERT IGNORE INTO Seances VALUES
 (443, '2026-02-22', '15:00:00', '17:00:00', 'Debutants', 139, 248),
 (444, '2026-02-23', '18:00:00', '20:00:00', 'Tous niveaux', 140, 249),
 (445, '2026-02-24', '17:00:00', '19:00:00', 'Intermediaire', 141, 250),
-(446, '2026-02-25', '09:30:00', '11:30:00', 'Seniors', 142, 251);
+(446, '2026-02-25', '09:30:00', '11:30:00', 'Seniors', 142, 251),
+(447, '2026-07-01', '18:00:00', '19:30:00', 'Debutant', 143, 252),
+(448, '2026-07-03', '18:30:00', '20:00:00', 'Intermediaire', 143, 252),
+(449, '2026-07-06', '19:00:00', '21:00:00', 'Confirme', 143, 252),
+(450, '2026-07-08', '17:30:00', '19:00:00', 'Debutant', 143, 252);
+
 
 -- INSCRIPTIONS : maintenant on met id_licencies et id_seance, pas nom/prenom/email
 INSERT IGNORE INTO Inscriptions VALUES
@@ -366,4 +381,12 @@ INSERT IGNORE INTO Inscriptions VALUES
 (557, '2026-02-26', 337, 438),
 (558, '2026-02-27', 338, 440),
 (559, '2026-02-28', 339, 442),
-(560, '2026-03-01', 340, 444);
+(560, '2026-03-01', 340, 444),
+(561, '2026-06-20', 351, 447),
+(562, '2026-06-20', 352, 447),
+(563, '2026-06-21', 353, 448),
+(564, '2026-06-21', 354, 448),
+(565, '2026-06-22', 355, 449),
+(566, '2026-06-22', 351, 449),
+(567, '2026-06-23', 352, 450),
+(568, '2026-06-23', 355, 450);
