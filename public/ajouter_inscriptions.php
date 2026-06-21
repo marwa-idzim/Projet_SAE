@@ -147,7 +147,7 @@ $messageErreur = "";
             $deja_inscrit = $stmt->fetchColumn();
 
             if((int)$deja_inscrit===0){
-                $messageSucces="Votre inscription à la séance a bien été prise en compte. Le mot de passe pour accéder aux inscrits est : ";
+                $messageSucces="Votre inscription à la séance a bien été prise en compte. Le mot de passe pour accéder aux inscrits est : azul";
 
                 $date_inscription=date("Y-m-d");
                 $sql = "SELECT MAX(id_inscription) FROM Inscriptions";
