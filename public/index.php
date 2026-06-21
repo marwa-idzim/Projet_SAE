@@ -58,47 +58,62 @@ $nbLicencies = $stmt->fetchColumn();
     <p>Consultez les clubs, équipements et séances sportives disponibles dans votre commune.</p>
     
     <section class="stats">
-        <div class="stat-card">
-            <h2><?php echo $nbCommunes; ?></h2>
-            <p>Communes</p>
-        </div>
 
-        <div class="stat-card">
-            <h2><?php echo $nbClubs; ?></h2>
-            <p>Clubs</p>
-        </div>
+        <a href="communes.php" class="stat-link">
+            <div class="stat-card">
+                <h2><?php echo $nbCommunes; ?></h2>
+                <p>Communes</p>
+            </div>
+        </a>
 
-        <div class="stat-card">
-            <h2><?php echo $nbSports; ?></h2>
-            <p>Sports</p>
-        </div>
+        <a href="clubs.php" class="stat-link">
+            <div class="stat-card">
+                <h2><?php echo $nbClubs; ?></h2>
+                <p>Clubs</p>
+            </div>
+        </a>
 
-        <div class="stat-card">
-            <h2><?php echo $nbEquipements; ?></h2>
-            <p>Équipements</p>
-        </div>
+        <a href="sports.php" class="stat-link">
+            <div class="stat-card">
+                <h2><?php echo $nbSports; ?></h2>
+                <p>Sports</p>
+            </div>
+        </a>
 
-        <div class="stat-card">
-            <h2><?php echo $nbSeances; ?></h2>
-            <p>Séances</p>
-        </div>
+        <a href="equipements.php" class="stat-link">
+            <div class="stat-card">
+                <h2><?php echo $nbEquipements; ?></h2>
+                <p>Équipements</p>
+            </div>
+        </a>
 
-        <div class="stat-card">
-            <h2><?php echo $nbInscriptions; ?></h2>
-            <p>Inscriptions</p>
-        </div>
+        <a href="seances.php" class="stat-link">
+            <div class="stat-card">
+                <h2><?php echo $nbSeances; ?></h2>
+                <p>Séances</p>
+            </div>
+        </a>
 
-        <div class="stat-card">
-            <h2><?php echo $nbLicencies; ?></h2>
-            <p>Licenciés</p>
-        </div>
+        <a href="inscriptions.php" class="stat-link">
+            <div class="stat-card">
+                <h2><?php echo $nbInscriptions; ?></h2>
+                <p>Inscriptions</p>
+            </div>
+        </a>
+
+        <a href="inscriptions.php" class="stat-link">
+            <div class="stat-card">
+                <h2><?php echo $nbLicencies; ?></h2>
+                <p>Licenciés</p>
+            </div>
+        </a>
+
     </section>
-
-     <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/script.js"></script>
 </body>
 <footer class="footer">
     <hr>
     <p>© 2026 - Projet SAE Programmation WEB - Association sportive</p>
-    <p>Réalisé par Marwa Idzim et Ramy ELHOSARY - Sup Galilée</p>
+    <p>Réalisé par Ramy ELHOSARY et Marwa Idzim - Sup Galilée</p>
 </footer>
 </html>
